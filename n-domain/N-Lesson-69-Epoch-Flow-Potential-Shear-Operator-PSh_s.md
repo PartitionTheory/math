@@ -40,8 +40,8 @@ Thus:
 
 $$
 \mathcal{PSh}_s(E)
-    =\frac{1}{2}\left(\mathcal{PJ}_s(E)+\mathcal{PJ}_s(E)^{\top}\right)
-    -\frac{\operatorname{tr}(\mathcal{PJ}_s(E))}{n}\,I
+=\frac{1}{2}\left(\mathcal{PJ}_s(E)+\mathcal{PJ}_s(E)^{\top}\right)
+-\frac{tr(\mathcal{PJ}_s(E))}{n}\,I
 $$
 
 Interpretation:
