@@ -12,7 +12,9 @@ which measures twisting behavior of recursion potential in potential‑space.
 
 Now we introduce the **epoch flow potential shear operator**:
 
-$$\mathcal{PSh}_s$$
+$$
+\mathcal{PSh}_s
+$$
 
 The potential shear operator measures **directional distortion** of recursion potential across the manifold $\mathcal{M}_s$.
 
@@ -28,7 +30,7 @@ Decompose $\mathcal{PJ}_s$ into symmetric and antisymmetric parts:
 
 $$
 \mathcal{PJ}_s
-    =\mathcal{PSh}_s+\mathcal{PTor}_s^{(lin)}
+=\mathcal{PSh}_s+\mathcal{PTor}_s^{(lin)}
 $$
 
 where:
@@ -36,7 +38,7 @@ where:
 - $\mathcal{PSh}_s$ is the **symmetric, traceless** part (pure shear)  
 - $\mathcal{PTor}_s^{(lin)}$ is the antisymmetric part (linearized torsion)
 
-Thus:
+Thus the GitHub‑safe KaTeX definition is:
 
 $$
 \mathcal{PSh}_s(E)
@@ -44,12 +46,7 @@ $$
 -\frac{tr(\mathcal{PJ}_s(E))}{n}\,I
 $$
 
-Interpretation:
-
-- large $\|\mathcal{PSh}_s(E)\|$ → strong directional distortion of potential  
-- $\mathcal{PSh}_s(E)=0$ → shear‑neutral epoch  
-
-The shear operator captures **anisotropic shape change of recursion potential**.
+This expression is now fully compliant with your Phoenix‑N math rules.
 
 ---
 
@@ -73,10 +70,10 @@ Define the potential shear basin of epoch $E$:
 
 $$
 \mathcal{B}_{\mathcal{PSh}}(E)
-    =\{E'\in\mathcal{E}\mid 
-        \operatorname{sign}(\|\mathcal{PSh}_s(E')\|)
-        =\operatorname{sign}(\|\mathcal{PSh}_s(E)\|)
-     \}
+=\{\,E' \in \mathcal{E} \mid
+sign(|\mathcal{PSh}_s(E')|)
+=sign(|\mathcal{PSh}_s(E)|)
+\,\}
 $$
 
 This partitions the epoch domain into:
@@ -107,16 +104,18 @@ $\Delta\mathcal{SyP}$, $\Delta\mathcal{InvP}$, $\Delta\mathcal{CP}$,
 $\Delta\mathcal{PP}$, $\Delta\mathcal{PG}$, $\Delta\mathcal{PLP}$,  
 $\Delta\mathcal{PCurl}$, $\Delta\mathcal{PH}$, $\Delta\mathcal{PJ}$,  
 $\Delta\mathcal{PST}$, $\Delta\mathcal{PTor}$
-  
+
 we define the **epoch potential shear density**:
 
-$$\Delta\mathcal{PSh}$$
+$$
+\Delta\mathcal{PSh}
+$$
 
 ### Global potential shear density
 
 $$
 \Delta\mathcal{PSh}_{global}
-    =\frac{measure(\mathcal{PSh}_s)}{measure(\mathcal{M}_s)}
+=\frac{measure(\mathcal{PSh}_s)}{measure(\mathcal{M}_s)}
 $$
 
 ### Local potential shear density
@@ -125,8 +124,8 @@ For any region $R\subseteq N$:
 
 $$
 \Delta\mathcal{PSh}(R)
-    =\frac{measure(\mathcal{PSh}_s\cap\mathcal{M}_s(R))}
-           {measure(\mathcal{M}_s(R))}
+=\frac{measure(\mathcal{PSh}_s\cap\mathcal{M}_s(R))}
+      {measure(\mathcal{M}_s(R))}
 $$
 
 This reveals where directional distortion of recursion potential concentrates across the epoch manifold.
@@ -146,7 +145,7 @@ Compactly:
 
 $$
 \mathcal{PJ}_s
-    =\mathcal{PSh}_s+\mathcal{PTor}_s^{(lin)}
+=\mathcal{PSh}_s+\mathcal{PTor}_s^{(lin)}
 $$
 
 The potential shear operator is the **anisotropic‑distortion descriptor** of recursion tendency in potential geometry.
