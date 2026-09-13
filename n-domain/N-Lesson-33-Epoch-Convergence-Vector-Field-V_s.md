@@ -119,8 +119,7 @@ This extends the attractor concept from N‑Lesson‑30 and N‑Lesson‑32.
 
 ## 6. Epoch Convergence Vector Density $$\(\Delta V\)$$
 
-As with earlier densities (ΔΦ, ΔΦG, ΔΞ, Δρ, ΔΛ, ΔΓ, \(\Delta(\mathcal{M}_s)\)), define:
-
+As with earlier densities ($\Delta \Phi$, $\Delta \Phi_G$, $\Delta \Xi$, $\Delta \rho$, $\Delta \Lambda$, $\Delta \Gamma$, $\Delta(\mathcal{M}_s)$), define:
 $$
 \Delta V
 $$
