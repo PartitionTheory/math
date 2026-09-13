@@ -160,9 +160,9 @@ The relationships are:
 
 ### Gradient → Manifold
 
-$$
-\Mu_s = \text{Manifold}(\Gamma_s)
-$$
+
+$$\Mu_s$$ = $$\text{Manifold}(\Gamma_s)$$
+
 
 ### Manifold → Vector Field
 
