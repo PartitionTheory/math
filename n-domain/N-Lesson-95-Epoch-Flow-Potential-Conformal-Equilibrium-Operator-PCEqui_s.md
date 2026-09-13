@@ -22,9 +22,7 @@ Let PCUni_s be the conformal uniformity operator and PCSc_s the conformal scalar
 
 Define the conformal equilibrium operator as:
 
-PCEqui_s(E)
-= $\frac{1}{1 + \left|\;PCUni_s(E) - PCGrad_s(E)\;\right|}
-   + \frac{1}{n-2} PCSc_s(E)$
+PCEqui_s(E) = $\frac{1}{1 + \left|\;PCUni_s(E) - PCGrad_s(E)\;\right|} + \frac{1}{n-2} PCSc_s(E)$
 
 Interpretation:
 
