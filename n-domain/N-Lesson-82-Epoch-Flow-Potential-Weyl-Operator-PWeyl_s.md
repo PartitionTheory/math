@@ -29,8 +29,8 @@ Let $PCurv_s$ be the potential curvature operator, $PRic_s$ the Ricci operator, 
 Define the potential Weyl operator as:
 
 PWeyl_s(E) = PCurv_s(E)
-- \(\frac{1}{n-2}\left(PRic_s(E)\odot PMet_s(E)\right)\)
-+ \(\frac{PSCurv_s(E)}{2(n-1)(n-2)}\left(PMet_s(E)\odot PMet_s(E)\right)\)
+- $\frac{1}{n-2}\left(PRic_s(E)\odot PMet_s(E)\right)$
++ $\frac{PSCurv_s(E)}{2(n-1)(n-2)}\left(PMet_s(E)\odot PMet_s(E)\right)$
 
 where $\odot$ denotes the symmetric tensor product.
 
