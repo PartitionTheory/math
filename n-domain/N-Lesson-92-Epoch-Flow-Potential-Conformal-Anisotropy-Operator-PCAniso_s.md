@@ -22,9 +22,7 @@ Let PCShear_s be the conformal shear operator and PCSc_s the conformal scalar op
 
 Define the conformal anisotropy operator as:
 
-PCAniso_s(E)
-= $\|PCShear_s(E)\|
-   + \frac{1}{n-2} PCSc_s(E)$
+PCAniso_s(E) = $\|PCShear_s(E)\| + \frac{1}{n-2} PCSc_s(E)$
 
 Interpretation:
 
