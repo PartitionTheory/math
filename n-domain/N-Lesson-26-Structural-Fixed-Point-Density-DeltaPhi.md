@@ -65,7 +65,7 @@ Interpretation:
 
 ### 4.2 Local fixed‑point density
 
-For any region \(R \subseteq N\):
+For any region $$\(R \subseteq N\)$$:
 
 $$
 \Delta\Phi(R) =
