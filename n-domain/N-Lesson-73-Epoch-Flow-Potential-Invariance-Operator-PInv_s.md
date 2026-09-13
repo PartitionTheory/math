@@ -36,7 +36,7 @@ $$
 
 where:
 
-- $\mathcal{PSym}_s(E)_{var}$ is the part of symmetry‑compatible structure that **varies** under $G_s$  
+- $PSym_s(E)_{var}$ is the part of symmetry‑compatible structure that **varies** under $G_s$  
 - $\mathcal{PInv}_s(E)$ is the part that remains **unchanged** under $G_s$
 
 Interpretation:
