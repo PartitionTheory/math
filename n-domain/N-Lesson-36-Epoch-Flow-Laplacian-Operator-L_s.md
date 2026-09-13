@@ -4,15 +4,15 @@
 
 In N‑Lesson‑34 we introduced the divergence operator:
 
-$ \Theta_s=\nabla\cdot V_s $
+$\Theta_s=\nabla\cdot V_s$
 
 In N‑Lesson‑35 we introduced the curl operator:
 
-$ \kappa_s=\nabla\times V_s $
+$\kappa_s=\nabla\times V_s$
 
 Now we combine these into the **epoch flow Laplacian**:
 
-$ \mathcal{L}_s $
+$\mathcal{L}_s$
 
 The Laplacian is the second‑order differential operator describing how epoch flow diffuses across the manifold $\mathcal{M}_s$.
 
