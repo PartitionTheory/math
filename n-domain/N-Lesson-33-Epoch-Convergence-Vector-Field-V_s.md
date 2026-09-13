@@ -136,8 +136,7 @@ the **epoch convergence vector density**, measuring how richly the vector field 
 
 ### 6.1 Global vector density
 
-$$ \Delta V_{\mathrm{global}} = \frac{\operatorname{measure}(V_s)}{\operatorname{measure}(\mathcal{M}_s)} $$
-
+As with earlier densities ($\Delta\Phi$, $\Delta\Phi_G$, $\Delta\Xi$, $\Delta\rho$, $\Delta\Lambda$, $\Delta\Gamma$, $\Delta\mathcal{M}_s$), define:
 Interpretation:
 
 - High ΔV → manifold has strong directional structure  
