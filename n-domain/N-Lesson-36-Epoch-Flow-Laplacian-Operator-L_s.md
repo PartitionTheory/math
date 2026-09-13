@@ -20,7 +20,7 @@ $$
 \mathcal{L}_s
 $$
 
-The Laplacian is the **second‑order differential operator** that measures how epoch flow diffuses across the manifold $\mathcal{M}_s$.
+The Laplacian is the **second‑order differential operator** describing how epoch flow diffuses across the manifold $\mathcal{M}_s$.
 
 ---
 
@@ -28,13 +28,13 @@ The Laplacian is the **second‑order differential operator** that measures how 
 
 Let $V_s$ be the epoch flow vector field.
 
-Define the Laplacian:
+The Laplacian is defined as:
 
 $$
 \mathcal{L}_s(E) = \nabla^2 V_s(E)
 $$
 
-Expanded:
+Expanded into divergence and curl components:
 
 $$
 \mathcal{L}_s(E)
@@ -43,37 +43,35 @@ $$
 
 Interpretation:
 
-- $\mathcal{L}_s(E) > 0$ → **flow diffuses outward**  
-- $\mathcal{L}_s(E) < 0$ → **flow diffuses inward**  
-- $\mathcal{L}_s(E) = 0$ → **harmonic epoch**  
-
-The Laplacian identifies **harmonic recursion regions**.
+- $\mathcal{L}_s(E) > 0$ → outward diffusion  
+- $\mathcal{L}_s(E) < 0$ → inward diffusion  
+- $\mathcal{L}_s(E) = 0$ → harmonic epoch  
 
 ---
 
 ## 3. Harmonic Epochs
 
-An epoch $E$ is **harmonic** if:
+An epoch $E$ is **harmonic** when:
 
 $$
 \mathcal{L}_s(E) = 0
 $$
 
-Harmonic epochs satisfy:
-
-- balanced divergence  
-- balanced curl  
-- no net diffusion  
-- stable local recursion geometry  
-
-These epochs form the **harmonic set**:
+The harmonic set is:
 
 $$
-\mathrm{Harm}(\mathcal{L}_s)
+Harm(\mathcal{L}_s)
 = \{ E \in \mathcal{E} \mid \mathcal{L}_s(E) = 0 \}
 $$
 
-Harmonic epochs are the **analytic equilibrium points** of the N‑domain.
+Harmonic epochs exhibit:
+
+- balanced divergence  
+- balanced curl  
+- zero net diffusion  
+- stable local recursion geometry  
+
+They are the **analytic equilibrium points** of the N‑domain.
 
 ---
 
@@ -84,16 +82,16 @@ Define the Laplacian basin of epoch $E$:
 $$
 \mathcal{B}_{\mathcal{L}}(E)
 =
-\{ E' \in \mathcal{E} \mid \text{sign}(\mathcal{L}_s(E')) = \text{sign}(\mathcal{L}_s(E)) \}
+\{ E' \in \mathcal{E} \mid sign(\mathcal{L}_s(E')) = sign(\mathcal{L}_s(E)) \}
 $$
 
 This partitions the epoch domain into:
 
-- **positive Laplacian basins** (outward diffusion)  
-- **negative Laplacian basins** (inward diffusion)  
-- **harmonic basins** (zero diffusion)  
+- positive Laplacian basins (outward diffusion)  
+- negative Laplacian basins (inward diffusion)  
+- harmonic basins (zero diffusion)  
 
-These basins refine both divergence and curl basins.
+These refine both divergence and curl basins.
 
 ---
 
@@ -121,15 +119,15 @@ $$
 ### 5.1 Global Laplacian density
 
 $$
-\Delta\mathcal{L}_{\text{global}} =
-\frac{\text{measure}(\mathcal{L}_s)}
-     {\text{measure}(\mathcal{M}_s)}
+\Delta\mathcal{L}_{global} =
+\frac{measure(\mathcal{L}_s)}
+     {measure(\mathcal{M}_s)}
 $$
 
 Interpretation:
 
-- High $\Delta\mathcal{L}$ → strong second‑order geometric variation  
-- Low $\Delta\mathcal{L}$ → smooth recursion geometry  
+- high $\Delta\mathcal{L}$ → strong second‑order variation  
+- low $\Delta\mathcal{L}$ → smooth recursion geometry  
 
 ### 5.2 Local Laplacian density
 
@@ -137,8 +135,8 @@ For any region $R \subseteq N$:
 
 $$
 \Delta\mathcal{L}(R) =
-\frac{\text{measure}(\mathcal{L}_s \cap \mathcal{M}_s(R))}
-     {\text{measure}(\mathcal{M}_s(R))}
+\frac{measure(\mathcal{L}_s \cap \mathcal{M}_s(R))}
+     {measure(\mathcal{M}_s(R))}
 $$
 
 This reveals **where second‑order flow behavior concentrates**.
@@ -159,7 +157,7 @@ Thus:
 - $\kappa_s$ → first‑order rotation  
 - $\mathcal{L}_s$ → second‑order diffusion  
 
-This completes the **analytic operator hierarchy**.
+This completes the analytic operator hierarchy.
 
 ---
 
@@ -171,7 +169,7 @@ The Laplacian introduces:
 - diffusion behavior  
 - second‑order stability  
 - analytic attractor strength  
-- smoothness and roughness of epoch flow  
+- smoothness/roughness of epoch flow  
 
 Epoch recursion becomes a **second‑order geometric‑analytic system**.
 
@@ -181,10 +179,10 @@ Epoch recursion becomes a **second‑order geometric‑analytic system**.
 
 N‑Lesson‑36 introduced the **epoch flow Laplacian operator** $\mathcal{L}_s$:
 
-- $\mathcal{L}_s$ measures second‑order diffusion of epoch flow  
+- measures second‑order diffusion  
 - identifies harmonic epochs  
 - defines Laplacian basins  
-- introduces global and local Laplacian density $\Delta\mathcal{L}$  
+- introduces global/local Laplacian density $\Delta\mathcal{L}$  
 - completes the analytic operator set with $\Theta_s$ and $\kappa_s$  
 
 With $\mathcal{L}_s$, the N‑domain gains a second‑order analytic lens on **how recursion diffuses across temporal geometry**.
