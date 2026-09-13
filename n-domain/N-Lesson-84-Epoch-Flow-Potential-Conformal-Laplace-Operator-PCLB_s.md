@@ -22,9 +22,7 @@ Let PMet_s be the potential metric tensor and PCSc_s the conformal scalar operat
 
 Define the conformal Laplace operator as:
 
-PCLB_s(E)
-= $\Delta f
-+ \frac{n-2}{4(n-1)} PCSc_s(E) f$
+PCLB_s(E) = $\Delta f + \frac{n-2}{4(n-1)} PCSc_s(E) f$
 
 where Δ is the standard Laplace–Beltrami operator.
 
