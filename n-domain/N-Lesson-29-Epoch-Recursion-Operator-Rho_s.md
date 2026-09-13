@@ -133,7 +133,7 @@ Interpretation:
 
 ### 6.2 Local epoch recursion density
 
-For any region \(R \subseteq N\):
+For any region $$\(R \subseteq N\)$$:
 
 $$
 \Delta\rho(R) =
