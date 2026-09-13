@@ -22,10 +22,7 @@ Let PCJac_s be the conformal Jacobian operator and PCSc_s the conformal scalar o
 
 Define the conformal shear operator as:
 
-PCShear_s(E)
-= $PCJac_s(E)
- - \frac{1}{n}\text{tr}(PCJac_s(E))\, I
- + \frac{1}{n-2} PCSc_s(E)$
+PCShear_s(E) = $PCJac_s(E) - \frac{1}{n}\text{tr}(PCJac_s(E))\, I + \frac{1}{n-2} PCSc_s(E)$
 
 Interpretation:
 
