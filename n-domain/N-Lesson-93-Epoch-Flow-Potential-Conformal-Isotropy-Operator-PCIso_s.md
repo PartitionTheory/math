@@ -22,9 +22,7 @@ Let PCShear_s be the conformal shear operator and PCSc_s the conformal scalar op
 
 Define the conformal isotropy operator as:
 
-PCIso_s(E)
-= $\frac{1}{\|PCShear_s(E)\| + 1}
-   + \frac{1}{n-2} PCSc_s(E)$
+PCIso_s(E) = $\frac{1}{\|PCShear_s(E)\| + 1} + \frac{1}{n-2} PCSc_s(E)$
 
 Interpretation:
 
