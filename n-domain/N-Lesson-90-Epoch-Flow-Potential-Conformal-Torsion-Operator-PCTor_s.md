@@ -22,9 +22,7 @@ Let PCJac_s be the conformal Jacobian operator and PCSc_s the conformal scalar o
 
 Define the conformal torsion operator as:
 
-PCTor_s(E)
-= $\frac{1}{2}\left( PCJac_s(E) - PCJac_s(E)^{T} \right)
-   + \frac{1}{n-2} PCSc_s(E)$
+PCTor_s(E) = $\frac{1}{2}\left( PCJac_s(E) - PCJac_s(E)^{T} \right) + \frac{1}{n-2} PCSc_s(E)$
 
 Interpretation:
 
