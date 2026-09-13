@@ -36,7 +36,7 @@ $$
 
 where:
 
-- $\mathcal{PAn}_s(E)_{break}$ is the component of anisotropy that breaks a chosen symmetry group $G_s$
+- $PAn_s(E)_{break}$ is the component of anisotropy that breaks a chosen symmetry group $G_s$
 - $\mathcal{PSym}_s(E)$ is the component compatible with $G_s$
 
 Interpretation:
