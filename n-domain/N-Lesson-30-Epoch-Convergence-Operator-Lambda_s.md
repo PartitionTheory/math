@@ -68,11 +68,9 @@ If the limit exists, $$\(E_j\)$$ is the **epoch attractor**.
 
 Define:
 
-$$
-\mathrm{Fix}(\Lambda_s)
+$$\mathrm{Fix}(\Lambda_s)$$
 =
-\{ E \in \mathcal{E} \mid \Lambda_s(E) = E \}
-$$
+$$\{ E \in \mathcal{E} \mid \Lambda_s(E) = E \}$$
 
 This set contains epochs that:
 
