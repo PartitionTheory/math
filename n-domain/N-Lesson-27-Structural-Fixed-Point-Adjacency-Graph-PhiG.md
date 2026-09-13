@@ -15,15 +15,15 @@ $$
 
 ## 2. The adjacency graph space 𝒢(N)
 
-Let \( \mathcal{G}(N) \) denote the space of all admissible adjacency graphs over N.
+Let $$\( \mathcal{G}(N) \)$$ denote the space of all admissible adjacency graphs over N.
 
 Graph operators introduced in earlier lessons include:
 
-- \( G_s \) — adjacency graph operator  
-- \( \Delta G \) — graph density  
-- \( \Omega G \) — graph ordering  
-- \( \times G \) — graph multiplication  
-- \( !G \) — graph factorial  
+- $$\( G_s \) — adjacency graph operator  
+- $$\( \Delta G \)$$ — graph density  
+- $$\( \Omega G \)$$ — graph ordering  
+- $$\( \times G \)$$ — graph multiplication  
+- $$\( !G \)$$ — graph factorial  
 
 ΦG acts on this entire operator‑closed graph space.
 
@@ -31,7 +31,7 @@ Graph operators introduced in earlier lessons include:
 
 ## 3. Defining the graph fixed‑point operator ΦG
 
-A graph \( G \in \mathcal{G}(N) \) is ΦG‑stable if:
+A graph $$\( G \in \mathcal{G}(N) \)$$ is ΦG‑stable if:
 
 $$
 \Phi_G(G) = G
@@ -103,11 +103,11 @@ This reveals **where** stable adjacency patterns concentrate.
 
 ### 6.1 Structural → Graph stability
 
-If a structure \( S \) is Φₛ‑stable, its induced adjacency graph \( G(S) \) is often ΦG‑stable.
+If a structure $$\( S \)$$ is Φₛ‑stable, its induced adjacency graph $$\( G(S) \)$$ is often ΦG‑stable.
 
 ### 6.2 Graph → Structural stability
 
-If a graph \( G \) is ΦG‑stable, its structural interpretation \( S(G) \) often lies in Fix(Φₛ).
+If a graph $$\( G \)$$ is ΦG‑stable, its structural interpretation $$\( S(G) \)$$ often lies in Fix(Φₛ).
 
 Thus:
 
