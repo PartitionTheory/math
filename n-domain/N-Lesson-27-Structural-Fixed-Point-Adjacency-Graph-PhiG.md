@@ -19,7 +19,7 @@ Let $$\( \mathcal{G}(N) \)$$ denote the space of all admissible adjacency graphs
 
 Graph operators introduced in earlier lessons include:
 
-- $$\( G_s \) — adjacency graph operator  
+- $$\( G_s \)$$ — adjacency graph operator  
 - $$\( \Delta G \)$$ — graph density  
 - $$\( \Omega G \)$$ — graph ordering  
 - $$\( \times G \)$$ — graph multiplication  
