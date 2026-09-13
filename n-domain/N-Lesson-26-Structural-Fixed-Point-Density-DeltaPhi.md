@@ -36,7 +36,7 @@ $$
 
 ## 3. Defining the fixed‑point set over N
 
-Let \(\mathcal{S}\) be the space of all admissible structures over N.
+Let $$\(\mathcal{S}\)$$ be the space of all admissible structures over N.
 
 Define:
 
