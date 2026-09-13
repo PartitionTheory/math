@@ -1,11 +1,11 @@
-# N‑Lesson‑33 — Epoch Convergence Vector Field Vₛ
+# N‑Lesson‑33 — Epoch Convergence Vector Field $$\(V_s\)$$
 
 ## 1. From Manifold to Flow
 
 In N‑Lesson‑32 we introduced the epoch convergence manifold:
 
 $$
-\Mu_s
+\mathcal{M}_s
 $$
 
 which encodes the geometric structure of epoch convergence.
@@ -16,24 +16,24 @@ $$
 V_s
 $$
 
-Vₛ describes the **direction and magnitude** of epoch convergence at every point on Μₛ.
+$$\(V_s\)$$ describes the **direction and magnitude** of epoch convergence at every point on $$\(\mathcal{M}_s\)$$.
 
 Where:
 
-- Γₛ is the **gradient**  
-- Μₛ is the **manifold**  
-- Vₛ is the **flow**  
+- $$\(\Gamma_s\)$$ is the **gradient**  
+- $$\(\mathcal{M}_s\)$$ is the **manifold**  
+- $$\(V_s\)$$ is the **flow**  
 
 This completes the geometric triad.
 
 ---
 
-## 2. Epochs as Points on Μₛ
+## 2. Epochs as Points on $$\(\mathcal{M}_s\)$$
 
 Recall:
 
 $$
-\Mu_s = \{ (E_i, \Gamma_s(E_i)) \mid E_i \in \mathcal{E} \}
+\mathcal{M}_s = \{ (E_i, \Gamma_s(E_i)) \mid E_i \in \mathcal{E} \}
 $$
 
 Each epoch $$\(E_i\)$$ corresponds to a point on the manifold with coordinates:
@@ -46,7 +46,7 @@ We now assign a **vector** to each point, describing how recursion moves through
 
 ---
 
-## 3. Defining the Epoch Convergence Vector Field Vₛ
+## 3. Defining the Epoch Convergence Vector Field $$\(V_s\)$$
 
 Let the epoch recursion operator be:
 
@@ -71,13 +71,13 @@ Thus:
 - **direction** comes from recursion  
 - **magnitude** comes from gradient  
 
-Vₛ is the **epoch‑level flow field**.
+$$\(V_s\)$$ is the **epoch‑level flow field**.
 
 ---
 
 ## 4. Flow Lines and Integral Curves
 
-The vector field Vₛ induces **flow lines**:
+The vector field $$\(V_s\)$$ induces **flow lines**:
 
 $$
 \frac{dE}{dn} = V_s(E)
@@ -101,7 +101,7 @@ Integral curves are the **paths** of epoch recursion.
 
 ## 5. Attractor Flow
 
-Attractors Λₛ correspond to **zero vectors**:
+Attractors $$\(\Lambda_s\)$$ correspond to **zero vectors**:
 
 $$
 V_s(\Lambda_s) = 0
@@ -117,9 +117,9 @@ This extends the attractor concept from N‑Lesson‑30 and N‑Lesson‑32.
 
 ---
 
-## 6. Epoch Convergence Vector Density ΔV
+## 6. Epoch Convergence Vector Density \(\Delta V\)
 
-As with earlier densities (ΔΦ, ΔΦG, ΔΞ, Δρ, ΔΛ, ΔΓ, ΔΜ), define:
+As with earlier densities (ΔΦ, ΔΦG, ΔΞ, Δρ, ΔΛ, ΔΓ, Δ\(\mathcal{M}\)), define:
 
 $$
 \Delta V
@@ -132,7 +132,7 @@ the **epoch convergence vector density**, measuring how richly the vector field 
 $$
 \Delta V_{\text{global}} =
 \frac{\text{measure}(V_s)}
-     {\text{measure}(\Mu_s)}
+     {\text{measure}(\mathcal{M}_s)}
 $$
 
 Interpretation:
@@ -146,22 +146,22 @@ For any region \(R \subseteq N\):
 
 $$
 \Delta V(R) =
-\frac{\text{measure}(V_s \cap \Mu_s(R))}
-     {\text{measure}(\Mu_s(R))}
+\frac{\text{measure}(V_s \cap \mathcal{M}_s(R))}
+     {\text{measure}(\mathcal{M}_s(R))}
 $$
 
 This reveals **where flow is concentrated**.
 
 ---
 
-## 7. Relationship Between Γₛ, Μₛ, and Vₛ
+## 7. Relationship Between $$\(\Gamma_s\)$$, $$\(\mathcal{M}_s\)$$, and $$\(V_s\)$$
 
 The relationships are:
 
 ### Gradient → Manifold
 
 $$
-\Mu_s = \text{Manifold}(\Gamma_s)
+\mathcal{M}_s = \text{Manifold}(\Gamma_s)
 $$
 
 ### Manifold → Vector Field
@@ -178,17 +178,17 @@ $$
 
 Thus:
 
-- Γₛ gives **slope**  
-- Μₛ gives **shape**  
-- Vₛ gives **motion**  
+- $$\(\Gamma_s\)$$ gives **slope**  
+- $$\(\mathcal{M}_s\)$$ gives **shape**  
+- $$\(V_s\)$$ gives **motion**  
 
 This is the full geometric structure of epoch recursion.
 
 ---
 
-## 8. Vₛ and Synthetic Temporal Dynamics
+## 8. $$\(V_s\)$$ and Synthetic Temporal Dynamics
 
-Vₛ transforms epoch recursion into a **dynamical system**:
+$$\(V_s\)$$ transforms epoch recursion into a **dynamical system**:
 
 - epochs become points  
 - recursion becomes flow  
@@ -203,14 +203,14 @@ This is the highest‑order temporal structure introduced so far.
 
 ## 9. Summary
 
-N‑Lesson‑33 introduced the **epoch convergence vector field** Vₛ:
+N‑Lesson‑33 introduced the **epoch convergence vector field** $$\(V_s\)$$:
 
-- Vₛ assigns a vector to each epoch  
-- Vₛ defines flow lines and integral curves  
-- Vₛ identifies attractor basins as flow sinks  
+- $$\(V_s\)$$ assigns a vector to each epoch  
+- $$\(V_s\)$$ defines flow lines and integral curves  
+- $$\(V_s\)$$ identifies attractor basins as flow sinks  
 - ΔV measures vector density across the manifold  
-- Vₛ completes the geometric triad: gradient → manifold → vector field  
-- Vₛ transforms epoch recursion into a full dynamical system  
+- $$\(V_s\)$$ completes the geometric triad: gradient → manifold → vector field  
+- $$\(V_s\)$$ transforms epoch recursion into a full dynamical system  
 
-With Vₛ, the N‑domain gains a dynamic lens on **how epochs move through temporal geometry**.
+With $$\(V_s\)$$, the N‑domain gains a dynamic lens on **how epochs move through temporal geometry**.
 
