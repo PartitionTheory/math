@@ -56,7 +56,7 @@ Each epoch $$\(E_i\)$$ contains:
 
 Ξₛ acts on epochs, not on structures or graphs.
 
-For an epoch \(E\):
+For an epoch $$\(E\)$$:
 
 $$
 \Xi_s(E) = E
@@ -85,11 +85,9 @@ $$
 
 Define:
 
-$$
-\mathrm{Fix}(\Xi_s)
-=
-\{ E \in \mathcal{E} \mid \Xi_s(E) = E \}
-$$
+
+$$\mathrm{Fix}(\Xi_s)$$ = $$\{ E \in \mathcal{E} \mid \Xi_s(E) = E \}$$
+
 
 This set contains epochs where:
 
