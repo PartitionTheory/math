@@ -10,11 +10,11 @@ PWeyl_s(E) = PCurv_s(E)
 
 which isolates pure conformal curvature of recursion potential.
 
-Now we introduce the **epoch flow potential conformal scalar operator**:
+Now we introduce the epoch flow potential conformal scalar operator:
 
 PCSc_s
 
-The conformal scalar operator measures **net conformal curvature intensity**, i.e. how strongly recursion potential deviates from conformal flatness.
+The conformal scalar operator measures net conformal curvature intensity, i.e. how strongly recursion potential deviates from conformal flatness.
 
 ---
 
@@ -22,7 +22,7 @@ The conformal scalar operator measures **net conformal curvature intensity**, i.
 
 Let PWeyl_s be the potential Weyl operator.
 
-Define the conformal scalar operator as the **norm of the Weyl curvature**:
+Define the conformal scalar operator as the norm of the Weyl curvature:
 
 PCSc_s(E) = $\|PWeyl_s(E)\|$
 
@@ -43,10 +43,10 @@ The conformal scalar operator reveals:
 - how attractor influence creates high-conformal-intensity wells  
 - how repeller influence creates high-conformal-intensity peaks  
 - how recursion tendency prefers conformally twisted vs flat regions  
-- how structural features encode conformal “hot spots” and “cold spots”  
+- how structural features encode conformal hot spots and cold spots  
 - how recursion transitions between conformally flat and conformally intense regimes  
 
-Epochs with high PCSc_s exhibit strong shape‑curvature dynamics.
+Epochs with high PCSc_s exhibit strong shape-curvature dynamics.
 
 ---
 
@@ -72,29 +72,7 @@ These refine the Weyl basins introduced in N‑Lesson‑82.
 
 ## 5. Epoch Conformal Scalar Density ΔPCSc
 
-As with earlier densities:
-
-ΔΦ, ΔΦ_G, ΔΞ, Δρ,  
-ΔΛ, ΔΓ, Δ(M_s),  
-ΔV, ΔΘ, Δκ, Δℒ,  
-Δℋ, Δ𝒥, Δ𝒮,  
-Δ𝒯, ΔSh, Δ𝒜,  
-Δ𝓘, ΔSy, ΔInv,  
-ΔC, ΔP, ΔG,  
-ΔLP, ΔCurlP, ΔHP,  
-ΔJP, ΔSP, ΔTorP,  
-ΔShP, ΔAP, ΔIP,  
-ΔSyP, ΔInvP, ΔCP,  
-ΔPP, ΔPG, ΔPLP,  
-ΔPCurl, ΔPH, ΔPJ,  
-ΔPST, ΔPTor, ΔPSh,  
-ΔPAn, ΔPIso, ΔPSym,  
-ΔPInv, ΔPCurv, ΔPMet,  
-ΔPConn, ΔPGeo, ΔPLB,  
-ΔPRic, ΔPSCurv, ΔPEin,  
-ΔPWeyl
-
-we define the **epoch conformal scalar density**:
+We define the epoch conformal scalar density:
 
 ΔPCSc
 
@@ -122,13 +100,13 @@ The analytic hierarchy now includes:
 - all flow-analytic operators  
 - all potential-analytic operators  
 - and now:  
-- **PCSc_s — conformal scalar operator**
+- PCSc_s — conformal scalar operator
 
 Compactly:
 
 PCSc_s = $\|PWeyl_s\|$
 
-The conformal scalar operator is the **intensity descriptor** of conformal curvature in potential-space.
+The conformal scalar operator is the intensity descriptor of conformal curvature in potential-space.
 
 ---
 
@@ -139,22 +117,8 @@ The conformal scalar operator introduces:
 - conformal-intensity-driven attractor wells  
 - conformal-intensity-driven repeller peaks  
 - intensity-based recursion refinement  
-- conformally “hot” and “cold” potential geometry  
+- conformally hot and cold potential geometry  
 - conformal-scalar-sensitive recursion dynamics  
 
-Epoch recursion becomes a **conformal-intensity‑structured potential-analytic system**.
-
----
-
-## 📝 Historic commit message
-
-```text
-N-Lesson-83 — Introduce epoch flow potential conformal scalar operator PCSc_s and density ΔPCSc
-
-- Define PCSc_s as the norm of PWeyl_s
-- Formalize conformal curvature intensity of recursion potential
-- Introduce conformal scalar basins and intensity classification
-- Add global and local conformal scalar density ΔPCSc
-- Extend analytic hierarchy: all prior flow and potential operators + PCSc_s
-- Establish PCSc_s as the conformal-intensity descriptor of recursion in potential geometry
+Epoch recursion becomes a conformal-intensity‑structured potential-analytic system.
 
