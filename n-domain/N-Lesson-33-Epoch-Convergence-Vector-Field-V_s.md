@@ -120,10 +120,6 @@ This extends the attractor concept from N‑Lesson‑30 and N‑Lesson‑32.
 ## 6. Epoch Convergence Vector Density $$\(\Delta V\)$$
 
 
-the **epoch convergence vector density**, measuring how richly the vector field populates the manifold.
-
-### 6.1 Global vector density
-
 As with earlier densities
 
 $$
@@ -134,6 +130,15 @@ define
 
 $$
 \Delta V
+$$
+
+the **epoch convergence vector density**, measuring how richly the vector field populates the manifold.
+
+### 6.1 Global vector density
+$$
+\Delta V_{\text{global}} =
+\frac{\text{measure}(V_s)}
+     {\text{measure}(\mathcal{M}_s)}
 $$
 Interpretation:
 
