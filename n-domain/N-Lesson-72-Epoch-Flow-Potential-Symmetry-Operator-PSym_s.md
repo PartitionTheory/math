@@ -27,7 +27,7 @@ Where isotropy describes uniformity of directions, symmetry describes **invarian
 
 Let $\mathcal{PAn}_s$ be the potential anisotropy tensor.
 
-Define the symmetry operator as the **invariance projector** on anisotropy:
+Define the symmetry operator as the **invariance‑preserving component** of anisotropy:
 
 $$
 \mathcal{PSym}_s(E)
@@ -36,8 +36,8 @@ $$
 
 where:
 
-- $\mathcal{PAn}_s(E)_{break}$ is the component of anisotropy that breaks a chosen symmetry group $G_s$  
-- $\mathcal{PSym}_s(E)$ is the component **compatible** with $G_s$
+- $\mathcal{PAn}_s(E)_{break}$ is the component of anisotropy that breaks a chosen symmetry group $G_s$
+- $\mathcal{PSym}_s(E)$ is the component compatible with $G_s$
 
 Interpretation:
 
@@ -144,7 +144,7 @@ Compactly:
 
 $$
 \mathcal{PAn}_s
-=\mathcal{PSym}_s+\mathcal{PAn}_s^{break}
+=\mathcal{PSym}_s+\mathcal{PAn}_s(E)_{break}
 $$
 
 The potential symmetry operator is the **symmetry‑compatible descriptor** of recursion tendency in potential geometry.
