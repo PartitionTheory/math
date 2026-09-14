@@ -6,7 +6,7 @@ Iterated Concatenation and Collapse Scaling
 ## 1. Purpose
 
 Structural power chains describe repeated concatenation of a structured
-partition. They model growth, repetition, and expansion of block sequences.
+partition. They model repetition, growth, and expansion of block sequences.
 
 ---
 
@@ -33,14 +33,19 @@ Examples:
 
 ## 3. Collapse Behavior
 
-Collapse scales linearly with n:
+Collapse scales linearly with n.
+
+For any p ∈ N⁺:
+
+    π(p) = d₁ + d₂ + … + dₖ
+
+Then:
 
     π(p^(⊗n)) = n · π(p)
 
 Proof:
 
-    π(p^(⊗n))
-      = π(p ⊗ p ⊗ … ⊗ p)
+    π(p ⊗ p ⊗ … ⊗ p)
       = π(p) + π(p) + … + π(p)
       = n · π(p)
 
@@ -50,14 +55,12 @@ Thus structural powers correspond to repeated degree addition in N−1.
 
 ## 4. Correct Recovery Statement (Word-Root Problem)
 
-Earlier versions incorrectly claimed reversibility.
+Recovery at a fixed exponent n is a **word-root problem**.
 
-Correct statement:
+A base p exists exactly when the block sequence of p^(⊗n) decomposes into n
+identical consecutive segments.
 
-If n is known, recovering p from p^(⊗n) is a **word-root problem**.
-
-A base p exists exactly when the full block sequence of p^(⊗n) consists of n
-repetitions of one subword. In that case, the base is unique for the specified n.
+If such a decomposition exists, the base p is unique for that exponent n.
 
 If the block sequence does not decompose into n identical segments, no such p
 exists.
@@ -83,8 +86,8 @@ This lesson establishes:
 
 • recursive definition of structural powers  
 • linear collapse behavior  
-• correct word-root recovery conditions  
+• correct fixed-exponent word-root recovery condition  
 • structural interpretation of repeated concatenation  
 
-These concepts prepare the foundation for the adjacency graph (Lesson 0006).
+This prepares the foundation for the adjacency graph (Lesson 0006).
 
