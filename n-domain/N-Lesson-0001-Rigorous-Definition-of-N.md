@@ -1,76 +1,63 @@
 # N‑Lesson‑0001 — Rigorous Definition of N
-Foundational Ontology of Structured Partitions
+Structured Partitions and Unit-Step Adjacency
 
 ---
 
-## 1. Domain Definition
+## 1. Structured Partitions
 
-N is the domain of finite structured partitions.  
-A partition p is an ordered tuple of blocks:
+A structured partition is an ordered tuple of unary blocks:
 
-    p = (b₁, b₂, …, bₖ)
+    p = (d₁, d₂, …, dₖ)
 
-Each block bᵢ has a degree:
+Each dᵢ ∈ ℕ⁺ is the degree of the i-th block.
 
-    deg(bᵢ) ∈ ℕ
-
-The domain N contains all such finite partitions.
+These objects are ordered compositions represented by unary blocks.
 
 ---
 
 ## 2. Corrected Adjacency Relation
 
-Two partitions p and q are adjacent when:
+Two structured partitions p = (d₁,…,dₖ) and q = (e₁,…,eₖ) are adjacent when:
 
-• they differ in exactly one block’s degree, and  
-• all other blocks match in position and value.
+• they have the same number of blocks, and  
+• there is exactly one index i such that |dᵢ − eᵢ| = 1, and  
+• for all j ≠ i, dⱼ = eⱼ.
 
 Formally:
 
-    Adj(p, q) = true  iff  p and q differ in exactly one block degree.
+    p ∼ q  iff  (|dᵢ − eᵢ| = 1 for exactly one i) and (dⱼ = eⱼ for j ≠ i).
 
-Adjacency is:
+Properties:
 
-• irreflexive  
 • symmetric  
+• irreflexive  
 • locally finite  
 
-This corrected definition replaces earlier reflexive or ambiguous versions.
+This adjacency defines the atomic structural moves in N.
 
 ---
 
 ## 3. Collapse Map
 
-The collapse map π sends a structured partition to its total degree:
+Define the collapse map:
 
-    π(p) = deg(b₁) + deg(b₂) + … + deg(bₖ)
+    π(d₁,…,dₖ) = Σᵢ dᵢ
 
-Collapse removes all internal structure while preserving total degree.
+Collapse forgets block order and individual degrees, preserving only total degree.
 
----
-
-## 4. Structured vs Collapsed Objects
-
-Structured object:
-
-    p = (b₁, b₂, …, bₖ)
-
-Collapsed object:
-
-    π(p) = d
-
-The collapse map defines the boundary domain N−1.
+Collapse is irreversible because π is non-injective: distinct structured partitions
+can share the same total degree.
 
 ---
 
-## 5. Summary
+## 4. Summary
 
-This lesson establishes the foundational ontology of N:
+This lesson establishes:
 
-• structured partitions  
-• block degrees  
-• corrected adjacency  
-• collapse map  
+• structured partitions as ordered unary compositions  
+• unit-step adjacency  
+• symmetry, irreflexivity, local finiteness  
+• collapse map π and its irreversibility  
 
-These definitions form the base layer for all subsequent lessons.
+These definitions form the foundation for all subsequent lessons.
 
