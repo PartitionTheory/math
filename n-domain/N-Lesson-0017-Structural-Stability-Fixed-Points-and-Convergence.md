@@ -56,13 +56,13 @@ Equivalently:
 
 ## 4. Structural Stability (Corrected)
 
-A fixed point p is **structurally stable** if there exists a neighbourhood
-U ⊆ P of p (in the adjacency graph) such that:
+A fixed point p is **structurally stable** if there exists an adjacency
+neighbourhood U of p such that:
 
 • every trajectory starting in U remains in U,  
 • and every such trajectory converges to p.
 
-This is the discrete analogue of local basin stability.
+This is the discrete analogue of a local basin of attraction.
 
 Global stability (p attracting its entire adjacency-connected component) is a
 separate, stronger notion.
@@ -95,13 +95,15 @@ A fixed point p is **strictly Lyapunov-stable** if:
 
 ### 6.1 Monotone Convergence
 
-Assume:
+Assume one of the following:
 
-    For every c ∈ ℝ, the sublevel set
-        { p ∈ P : F(p) ≤ c }
+(A) F(P) is a discrete subset of ℝ,  
+or  
+(B) every sublevel set  
+        { p ∈ P : F(p) ≤ c }  
     is finite.
 
-Under this assumption, monotone flows satisfy:
+Under either assumption, monotone flows satisfy:
 
     F(p_0) ≥ F(p_1) ≥ F(p_2) ≥ ⋯
 
@@ -151,9 +153,6 @@ A fixed point p is **second-order stable** if:
 A fixed point is **strictly second-order stable** if:
 
     Q(p,q) > 0   for all q ∈ 𝒩(p) \ {p}.
-
-This is the discrete analogue of positive-semidefinite and positive-definite
-Hessian conditions.
 
 ---
 
