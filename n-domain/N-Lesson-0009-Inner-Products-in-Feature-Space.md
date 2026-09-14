@@ -1,132 +1,131 @@
 # N‑Lesson‑0009 — Inner Products in Feature Space
-Structural Inner Products and Angles via φ(p) ∈ ℓ²
+Structural Inner-Product Kernel and Angular Geometry
 
 ---
 
-## 0. Purpose
+## 1. Purpose
 
-This lesson defines structural inner products and angles using the feature‑space
-embedding φ : 𝒫 → ℓ² introduced in Lesson 0008. Because ℓ² is a true vector
-space, inner products and angles are well‑defined and mathematically valid.
+Structured partitions do not form a vector space.  
+To apply linear geometry, we use the injective positional embedding:
+
+    ψ : N → ℓ²(ℕ⁺×ℕ⁺)
+
+defined in Lesson 0008.
+
+All inner-product operations occur in feature space, not on partitions directly.
 
 ---
 
-## 1. Inner Product Definition
+## 2. Inner Product in Feature Space
 
-Every partition p is mapped to a vector:
+For structured partitions p and q, define the structural inner-product kernel:
 
-    φ(p) = (c₁(p), c₂(p), c₃(p), …) ∈ ℓ²
+    Kψ(p, q) = ⟨ψ(p), ψ(q)⟩
 
-Define the structural inner product:
-
-    ⟨p, q⟩ = ⟨φ(p), φ(q)⟩₂
+where the right-hand side is the standard ℓ² inner product.
 
 Explicitly:
 
-    ⟨φ(p), φ(q)⟩₂ = Σⱼ cⱼ(p) · cⱼ(q)
+    ⟨ψ(p), ψ(q)⟩ = Σᵢ Σⱼ ψ(p)ᵢⱼ · ψ(q)ᵢⱼ
 
-This is the standard Euclidean inner product in ℓ².
-
----
-
-## 2. Properties
-
-### Symmetry
-    ⟨p, q⟩ = ⟨q, p⟩
-
-### Linearity
-    ⟨a·p + b·r, q⟩ = a·⟨p, q⟩ + b·⟨r, q⟩
-
-### Positive‑definiteness
-    ⟨p, p⟩ = Σⱼ cⱼ(p)² ≥ 0
-
-These hold because ℓ² is a Hilbert space.
+Because ψ is injective and has finite support, this is well-defined.
 
 ---
 
-## 3. Structural Angle
+## 3. Linearity (Corrected)
 
-Define the angle between partitions p and q:
+Linearity belongs to the ambient feature vectors, not to partitions.
 
-    θ(p, q) = arccos( ⟨φ(p), φ(q)⟩₂ / (‖φ(p)‖₂ · ‖φ(q)‖₂) )
+Correct statement:
 
-This is the standard Euclidean angle between vectors in ℓ².
-
-Interpretation:
-
-• θ = 0 when p and q have identical degree distributions  
-• θ = π/2 when p and q share no degree overlap  
-• θ approaches π when distributions oppose each other
-
----
-
-## 4. Collapse Behavior
-
-Under collapse:
-
-    π(p) = deg(p)
-
-The feature vector becomes:
-
-    φ(p) ↦ (deg(p))
+    The ℓ² inner product is linear in its vector arguments.
+    No vector-space addition or scalar multiplication is asserted on partitions.
 
 Thus:
 
-    ⟨p, q⟩ ↦ deg(p) · deg(q)
-
-and:
-
-    θ(p, q) ↦ arccos( deg(p)·deg(q) / (|deg(p)|·|deg(q)|) )
-
-If deg(p) and deg(q) are positive:
-
-    θ(p, q) = 0
-
-Thus degree‑only geometry collapses to trivial alignment, confirming that
-feature‑space geometry is strictly richer.
+• partitions are not vectors  
+• ψ(p) and ψ(q) are vectors  
+• linearity applies only to ψ(p), ψ(q), and their combinations  
 
 ---
 
-## 5. Examples
+## 4. Induced Magnitudes
 
-### Example 1 — Inner Product
+Define the feature-space magnitude:
 
-Let:
+    ‖ψ(p)‖₂ = sqrt(⟨ψ(p), ψ(p)⟩)
 
-    φ(p) = (2, 0, 1, 0, …)
-    φ(q) = (1, 0, 1, 0, …)
+This is a true norm because ψ(p) is a vector in ℓ².
 
-Then:
+Magnitude measures:
 
-    ⟨p, q⟩ = 2·1 + 0·0 + 1·1 = 3
-
-### Example 2 — Angle
-
-Norms:
-
-    ‖φ(p)‖₂ = sqrt(5)
-    ‖φ(q)‖₂ = sqrt(2)
-
-Angle:
-
-    θ(p, q) = arccos( 3 / (sqrt(5)·sqrt(2)) )
+• number of blocks  
+• distribution of degrees  
+• positional structure  
 
 ---
 
-## 6. Summary
+## 5. Structural Angle (Corrected)
+
+Define the angle between p and q by:
+
+    θ(p, q) = arccos( ⟨ψ(p), ψ(q)⟩ / (‖ψ(p)‖₂ · ‖ψ(q)‖₂) )
+
+Because all coordinates of ψ(p) and ψ(q) are nonnegative:
+
+    0 ≤ θ(p, q) ≤ π/2
+
+Thus the angle never approaches π.
+
+---
+
+## 6. Zero-Angle Interpretation (Corrected)
+
+Earlier versions incorrectly claimed that θ = 0 implies identical distributions.
+
+Correct statement:
+
+    θ(p, q) = 0  iff  ψ(p) and ψ(q) are positively proportional.
+
+Under the positional one-hot embedding:
+
+• ψ(p) and ψ(q) have exactly one nonzero entry per row  
+• proportionality forces equality of all nonzero coordinates  
+
+Thus:
+
+    θ(p, q) = 0  implies  p = q
+
+This holds because ψ is injective.
+
+---
+
+## 7. Structural Interpretation
+
+The inner-product kernel Kψ(p, q) measures:
+
+• positional agreement  
+• degree agreement  
+• structural similarity  
+
+The angle θ(p, q) measures:
+
+• alignment of structural patterns  
+• similarity of block-degree sequences  
+• geometric closeness in feature space  
+
+---
+
+## 8. Summary
 
 This lesson establishes:
 
-• structural inner products via ℓ²  
-• structural angles via Euclidean geometry  
-• collapse behavior consistent with degree multiplication  
-• a valid geometric layer for projections and orthogonality
+• structural inner-product kernel Kψ  
+• linearity only in feature vectors  
+• magnitude ‖ψ(p)‖₂  
+• angle range 0 ≤ θ ≤ π/2  
+• zero-angle equivalence p = q under ψ  
+• correct geometric interpretation in ℓ²  
 
-These constructions are required for Lesson 0010.
-
----
-
-## 7. Next Lesson
-
-N‑Lesson‑0010 (Unicode Edition) — Projections and Orthogonality in Feature Space
+This prepares the foundation for projections and orthogonality (Lesson 0010).
 
