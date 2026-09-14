@@ -5,7 +5,7 @@ Ambient Flow Fields and Discrete Structural Evolution
 
 ## 1. Purpose
 
-Lessons 0011–0015 introduced ambient derivatives (gradient, Jacobian, Hessian),
+Lessons 0011–0015 established ambient derivatives (gradient, Jacobian, Hessian),
 ambient Laplacians and divergence, and discrete optimisation rules on P.
 
 Lesson 0016 develops **structural flows**:
@@ -23,7 +23,7 @@ All flows on P are discrete; ambient flows provide guidance.
 
 Let F(p) = Φ(ψ(p)) with Φ differentiable on an open neighbourhood of ψ(P).
 
-Define the ambient flow direction:
+Define the ambient descent direction:
 
     X(p) := −∇F(p) ∈ ℓ².
 
@@ -75,8 +75,8 @@ Ambient-guided structural flow:
 
     p_{n+1} ∈ argmin_{q ∈ 𝒩(p_n)} P(p_n, q).
 
-This selects the neighbour whose displacement has the most favourable ambient
-linear estimate. Actual decrease must be checked via F(q).
+This ranks neighbours by ambient descent alignment. Actual decrease must be
+verified using F(q).
 
 ---
 
@@ -142,7 +142,7 @@ The discrete structural Laplacian from Lesson 0014 is:
 
     Δ_struct F(p) = Σ_{r ∈ 𝒩(p)} (F(r) − F(p)).
 
-To make smoothing neighbour-dependent, define:
+To incorporate neighbourhood variation around each candidate q, define:
 
     S(p, q) := Δ_struct F(q).
 
@@ -150,7 +150,7 @@ A Laplacian-smoothed flow step is:
 
     p_{n+1} ∈ argmin_{q ∈ 𝒩(p_n)} ( P(p_n, q), S(p_n, q) ).
 
-This incorporates neighbourhood variation around each candidate q.
+This incorporates both ambient descent alignment and neighbourhood variation.
 
 ---
 
