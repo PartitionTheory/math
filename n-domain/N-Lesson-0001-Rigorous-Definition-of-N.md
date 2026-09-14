@@ -5,27 +5,28 @@ Structured Partitions and Unit-Step Adjacency
 
 ## 1. Structured Partitions
 
-A structured partition is an ordered tuple of unary blocks:
+A structured partition is an ordered tuple of positive degrees:
 
     p = (d₁, d₂, …, dₖ)
 
-Each dᵢ ∈ ℕ⁺ is the degree of the i-th block.
+Each dᵢ is a positive integer.
 
-These objects are ordered compositions represented by unary blocks.
+These objects are ordered unary compositions.
 
 ---
 
-## 2. Corrected Adjacency Relation
+## 2. Adjacency Relation
 
 Two structured partitions p = (d₁,…,dₖ) and q = (e₁,…,eₖ) are adjacent when:
 
-• they have the same number of blocks, and  
-• there is exactly one index i such that |dᵢ − eᵢ| = 1, and  
-• for all j ≠ i, dⱼ = eⱼ.
+    |dᵢ − eᵢ| = 1 for exactly one index i
+    dⱼ = eⱼ for all j ≠ i
 
 Formally:
 
-    p ∼ q  iff  (|dᵢ − eᵢ| = 1 for exactly one i) and (dⱼ = eⱼ for j ≠ i).
+    p ∼ q
+
+iff the above conditions hold.
 
 Properties:
 
@@ -33,20 +34,17 @@ Properties:
 • irreflexive  
 • locally finite  
 
-This adjacency defines the atomic structural moves in N.
-
 ---
 
 ## 3. Collapse Map
 
-Define the collapse map:
+Define:
 
-    π(d₁,…,dₖ) = Σᵢ dᵢ
+    π(p) = d₁ + d₂ + … + dₖ
 
 Collapse forgets block order and individual degrees, preserving only total degree.
 
-Collapse is irreversible because π is non-injective: distinct structured partitions
-can share the same total degree.
+Collapse is irreversible because π is not injective.
 
 ---
 
@@ -54,10 +52,10 @@ can share the same total degree.
 
 This lesson establishes:
 
-• structured partitions as ordered unary compositions  
+• structured partitions  
 • unit-step adjacency  
-• symmetry, irreflexivity, local finiteness  
-• collapse map π and its irreversibility  
+• collapse map π  
+• irreversibility of π  
 
-These definitions form the foundation for all subsequent lessons.
+This forms the foundation for Lessons 0002–0010.
 
