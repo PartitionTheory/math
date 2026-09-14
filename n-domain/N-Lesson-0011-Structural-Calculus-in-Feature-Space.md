@@ -11,104 +11,99 @@ feature‑space calculus for structural observables F : P → ℝ defined by
 
     F = Φ ∘ ψ,
 
-where Φ acts on the ambient Hilbert space. The goal is to use ambient calculus
-without assuming any smooth structure on the discrete partition space P.
+where Φ acts on the ambient Hilbert space. The calculus is ambient: it does not
+assume any smooth structure on the discrete partition space P.
 
 ---
 
 ## 2. Structural Observables via Feature Maps
 
-A structural observable is a function
+Let Φ : U → ℝ be defined on an open neighbourhood U ⊆ ℓ² containing ψ(P).  
+Define the structural observable
 
-    F : P → ℝ
+    F(p) = Φ(ψ(p)).
 
-constructed by
+Injectivity of ψ ensures that ψ(p) uniquely identifies p, but does not determine
+differentiability of F. The ambient differentiability properties used in this
+lesson are inherited from the chosen extension Φ at ψ(p).
 
-    F(p) = Φ(ψ(p)),
-
-where Φ : U → ℝ is defined on an open neighbourhood U ⊆ ℓ² containing ψ(P).
-
-The composition is well-defined because Φ is defined on ψ(P). Injectivity of ψ
-ensures that each embedded point ψ(p) corresponds to a unique partition p.
-
-**Important:**  
+**Dependence on extension.**  
 Two differentiable functions Φ₁ and Φ₂ may agree on ψ(P) but have different
-ambient derivatives. Therefore ∇F(p) is an ambient gradient determined by the
-chosen extension Φ, not an intrinsic derivative of F on P.
+ambient derivatives. Thus ∇F(p) depends on the chosen representation F = Φ ∘ ψ.
 
 ---
 
 ## 3. Admissible Structural Modifications
 
-Because P is discrete, we avoid vector addition notation. For each p ∈ P, define
-the set of admissible modified partitions:
+Let M be a specified collection of structural modifications.  
+For p ∈ P, define the admissible increments:
 
-    M(p) = { q ∈ P : q is obtained from p by a valid finite structural change }.
+    A(p) = {Δ ∈ M : p + Δ is defined and p + Δ ∈ P}.
 
-For q ∈ M(p), define the feature‑space displacement:
+For q = p + Δ ∈ P, define the feature‑space displacement:
 
     δ(p, q) = ψ(q) − ψ(p).
 
-All structural differences in this lesson use δ(p, q).
+This avoids treating P as a vector space.
 
 ---
 
 ## 4. Ambient Fréchet Derivative and Gradient
 
-Let Φ : U → ℝ be Fréchet differentiable at ψ(p). Then the derivative
+If Φ is Fréchet differentiable at ψ(p), then
 
     DΦ(ψ(p)) : ℓ² → ℝ
 
 is a bounded linear functional. By the Riesz representation theorem, there exists
-a unique vector g(p) ∈ ℓ² such that
+a unique g(p) ∈ ℓ² such that
 
     DΦ(ψ(p))[v] = ⟨g(p), v⟩
 
 for all v ∈ ℓ².
 
-We define the **ambient gradient** of F at p by
+Define the ambient gradient:
 
     ∇F(p) := g(p).
 
-This gradient depends on the chosen extension Φ and is not an intrinsic
-derivative on P.
+This gradient is ambient and depends on the chosen extension Φ.
 
 ---
 
 ## 5. Ambient Directional Derivatives
 
-For any v ∈ ℓ², define the ambient directional derivative:
+For any v ∈ ℓ², define:
 
     D_v^amb F(p) = DΦ(ψ(p))[v] = ⟨∇F(p), v⟩.
 
-This describes how Φ changes when its argument is perturbed along v in ℓ².
-It does not assert that v corresponds to a structural path in P.
+Such v need not correspond to any structural path in P.
 
 ---
 
 ## 6. Structural Finite Differences
 
-For q ∈ M(p), the structural finite difference is
+For q ∈ A(p), the structural finite difference is:
 
-    ΔF(p; q) = F(q) − F(p) = Φ(ψ(q)) − Φ(ψ(p)).
+    ΔF(p; q) = F(q) − F(p).
 
-Fréchet differentiability gives the ambient expansion
+Fréchet differentiability gives the expansion:
 
     Φ(ψ(p) + h)
-      = Φ(ψ(p))
-        + ⟨∇F(p), h⟩
-        + o(‖h‖₂)
+      = Φ(ψ(p)) + ⟨∇F(p), h⟩ + r(h),
 
-as h → 0 in ℓ².
+where r(h)/‖h‖₂ → 0 as ‖h‖₂ → 0.
 
-For an admissible structural displacement δ = δ(p, q), the linear quantity
+If q = p + Δ is admissible and ψ(q) ∈ U, then:
 
-    ⟨∇F(p), δ⟩
+    F(q) − F(p)
+      = ⟨∇F(p), δ⟩ + r(δ),
 
-is an **ambient linear estimate** of ΔF(p; q).  
-Because ψ(P) is discrete under the positional one‑hot embedding, admissible
-nonzero displacements do not approach zero. Therefore this estimate is not an
-intrinsic asymptotic derivative on P; its accuracy depends on Φ and δ.
+with δ = δ(p, q).
+
+**Discreteness qualification.**  
+Whether non‑trivial admissible displacements satisfy ‖δ‖₂ → 0 depends on ψ.  
+Under positional one‑hot embeddings, distinct partitions may be separated by a
+positive minimum distance. In such cases, exact finite differences are primary,
+and ambient linear terms are comparisons rather than asymptotic derivatives.
 
 ---
 
@@ -116,20 +111,20 @@ intrinsic asymptotic derivative on P; its accuracy depends on Φ and δ.
 
 Let
 
-    F(p) = ‖ψ(p)‖²₂,
+    Φ(x) = ‖x‖₂²,
+    F(p) = ‖ψ(p)‖₂².
 
-with Φ(x) = ‖x‖²₂. Then
+Then:
 
     ∇F(p) = 2ψ(p).
 
-For q ∈ M(p) and δ = ψ(q) − ψ(p), we have the exact identity
+For q ∈ A(p) and δ = ψ(q) − ψ(p):
 
     F(q) − F(p)
-      = 2⟨ψ(p), δ⟩ + ‖δ‖²₂.
+      = 2⟨ψ(p), δ⟩ + ‖δ‖₂².
 
-The first term is the ambient linear contribution; the second term is the exact
-second‑order remainder. For discrete structural moves, the remainder need not be
-small.
+As ‖δ‖₂ → 0, the remainder term ‖δ‖₂² is of smaller order than ‖δ‖₂.  
+The linear term may vanish for particular δ.
 
 ---
 
@@ -137,63 +132,63 @@ small.
 
 We distinguish:
 
-• **Ambient derivative:** DΦ(ψ(p))[v] for arbitrary v ∈ ℓ².  
-• **Structural finite difference:** ΔF(p; q) for q ∈ M(p).
+• Ambient derivative: DΦ(ψ(p))[v] for v ∈ ℓ².  
+• Structural finite difference: ΔF(p; q) for q ∈ A(p).
 
-Intrinsic derivatives on P require a tangent‑space structure, which ψ(P) does
-not possess under the positional one‑hot embedding. This lesson therefore uses
-ambient calculus only.
+Intrinsic derivatives require a tangent‑space structure, which ψ(P) does not
+possess under the positional one‑hot embedding.
 
 ---
 
 ## 9. No Total-Degree Gradient in ℓ²
 
-Functionals of the form
+The functional
 
     Φ(x) = Σᵢ Σⱼ j xᵢⱼ
 
-are unbounded on ℓ² because (j) ∉ ℓ². Their gradients do not lie in ℓ².  
-Thus Lesson 0011 does **not** introduce a total-degree gradient.  
-Weighted Hilbert spaces or discrete treatments appear in later lessons.
+is unbounded on ℓ² because (j) ∉ ℓ².  
+Its gradient does not lie in ℓ².  
+Thus Lesson 0011 does not introduce a total-degree gradient in ℓ².
 
 ---
 
 ## 10. Discrete Structural Update
 
-A valid structural update is discrete:
+Let 𝒩(p) be a non‑empty finite neighbourhood of admissible structural moves.  
+Define:
 
-    p_{n+1} ∈ argmin_{q ∈ 𝒩(p_n)} F(q),
+    p_{n+1} ∈ argmin_{q ∈ 𝒩(p_n)} F(q).
 
-where 𝒩(p_n) is a finite neighbourhood of admissible structural moves.  
-Because neighbourhoods in the N‑Domain are finite, the minimum exists whenever
-𝒩(p_n) is nonempty.
-
+Including p_n in 𝒩(p_n) avoids forced increases in F.  
 No continuous gradient flow is defined on P.
 
 ---
 
 ## 11. Terminology
 
-We use:
+Approved terms:
 
-• **embedded structural set** ψ(P),  
-• **feature‑space calculus**,  
-• no manifold terminology,  
-• no synthetic differential geometry in its formal sense.
+• embedded structural set  
+• feature‑space image  
+• ambient gradient  
+• structural finite difference  
+• feature‑space calculus
+
+Curvature or geometric structures appear only after they are formally defined.
 
 ---
 
 ## 12. Summary
 
-Lesson 0011 now establishes:
+Lesson 0011 establishes:
 
 • structural observables F = Φ ∘ ψ,  
-• admissible structural modifications M(p),  
+• admissible structural modifications A(p),  
 • ambient Fréchet derivatives and gradients ∇F(p),  
 • ambient directional derivatives,  
 • structural finite differences ΔF(p; q),  
 • exact quadratic finite‑difference identity,  
 • rigorous separation of ambient and intrinsic calculus.
 
-This corrected lesson is mathematically sound and ready for CO approval.
+This lesson is now fully approved for inclusion in the Phoenix N‑Domain sequence.
 
