@@ -44,14 +44,17 @@ This is a one-sided infinite path.
 
 ---
 
-## 4. Vertex Degrees (Corrected)
+## 4. Vertex Degrees
 
 Because indexing begins at n = 1:
 
-• the initial vertex p^(⊗1) = p has degree 1  
-• every vertex p^(⊗n) with n ≥ 2 has degree 2  
+    deg(p^(⊗1)) = 1
 
-There is **one endpoint**, not two.
+and for all n ≥ 2:
+
+    deg(p^(⊗n)) = 2
+
+Thus the graph has exactly one endpoint.
 
 ---
 
@@ -118,8 +121,8 @@ This lesson establishes:
 • vertex set Vₚ = { p^(⊗n) }  
 • undirected successor edges  
 • one-sided infinite path structure  
-• corrected vertex-degree statement  
-• collapse step equality  
+• correct vertex-degree statement  
+• collapse-step identity  
 • worked example demonstrating structure  
 
 This prepares the foundation for structural distance (Lesson 0007).
