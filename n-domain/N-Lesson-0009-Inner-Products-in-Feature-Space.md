@@ -8,9 +8,7 @@ Structural Inner-Product Kernel and Angular Geometry
 Structured partitions do not form a vector space.  
 To apply linear geometry, we use the injective positional embedding:
 
-    ψ : N → ℓ²(ℕ⁺×ℕ⁺)
-
-defined in Lesson 0008.
+    ψ : N → ℓ²(ℕ⁺ × ℕ⁺)
 
 All inner-product operations occur in feature space, not on partitions directly.
 
@@ -21,8 +19,6 @@ All inner-product operations occur in feature space, not on partitions directly.
 For structured partitions p and q, define the structural inner-product kernel:
 
     Kψ(p, q) = ⟨ψ(p), ψ(q)⟩
-
-where the right-hand side is the standard ℓ² inner product.
 
 Explicitly:
 
@@ -49,23 +45,21 @@ Thus:
 
 ---
 
-## 4. Induced Magnitudes
+## 4. Magnitudes in Feature Space
 
-Define the feature-space magnitude:
+Define the feature-space norm:
 
     ‖ψ(p)‖₂ = sqrt(⟨ψ(p), ψ(p)⟩)
 
-This is a true norm because ψ(p) is a vector in ℓ².
+Because ψ(p) has exactly k nonzero entries (one per block):
 
-Magnitude measures:
+    ‖ψ(p)‖₂ = √k
 
-• number of blocks  
-• distribution of degrees  
-• positional structure  
+Thus the norm measures **block count**.
 
 ---
 
-## 5. Structural Angle (Corrected)
+## 5. Structural Angle
 
 Define the angle between p and q by:
 
@@ -75,17 +69,11 @@ Because all coordinates of ψ(p) and ψ(q) are nonnegative:
 
     0 ≤ θ(p, q) ≤ π/2
 
-Thus the angle never approaches π.
+Thus the angle never exceeds π/2.
 
 ---
 
-## 6. Zero-Angle Interpretation (Corrected)
-
-Earlier versions incorrectly claimed that θ = 0 implies identical distributions.
-
-Correct statement:
-
-    θ(p, q) = 0  iff  ψ(p) and ψ(q) are positively proportional.
+## 6. Zero-Angle Interpretation
 
 Under the positional one-hot embedding:
 
@@ -96,23 +84,33 @@ Thus:
 
     θ(p, q) = 0  implies  p = q
 
-This holds because ψ is injective.
+Angle measures **directional alignment**, not metric closeness.
+
+Metric closeness is measured by:
+
+    ‖ψ(p) − ψ(q)‖₂
+
+These are distinct geometric notions.
 
 ---
 
-## 7. Structural Interpretation
+## 7. Interpretation
 
 The inner-product kernel Kψ(p, q) measures:
 
 • positional agreement  
 • degree agreement  
-• structural similarity  
+• structural alignment  
 
 The angle θ(p, q) measures:
 
-• alignment of structural patterns  
+• directional alignment of structural patterns  
 • similarity of block-degree sequences  
-• geometric closeness in feature space  
+
+The metric ‖ψ(p) − ψ(q)‖₂ measures:
+
+• distance in feature space  
+• difference in block positions and degrees  
 
 ---
 
@@ -122,10 +120,11 @@ This lesson establishes:
 
 • structural inner-product kernel Kψ  
 • linearity only in feature vectors  
-• magnitude ‖ψ(p)‖₂  
+• magnitude ‖ψ(p)‖₂ = √k  
 • angle range 0 ≤ θ ≤ π/2  
-• zero-angle equivalence p = q under ψ  
-• correct geometric interpretation in ℓ²  
+• correct interpretation: angle = directional alignment  
+• metric distance = ‖ψ(p) − ψ(q)‖₂  
+• injective geometry in ℓ²
 
 This prepares the foundation for projections and orthogonality (Lesson 0010).
 
