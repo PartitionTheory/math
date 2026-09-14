@@ -1,186 +1,200 @@
 # N‑Lesson‑0012 — Jacobian Operators in Feature Space
-Multi‑Output Structural Differentiation in ℓ²(ℕ⁺ × ℕ⁺)
+Ambient Multi‑Output Derivatives for Embedded Partitions
 
 ---
 
 ## 1. Purpose
 
-Lesson 0011 introduced:
+Lesson 0011 established a rigorous ambient calculus for scalar observables
+F : P → ℝ defined by F = Φ ∘ ψ, with Φ differentiable on ℓ² and ψ embedding
+the discrete partition space P.
 
-• structural functions F : P → ℝ  
-• displacement δ = ψ(q) − ψ(p)  
-• gradients ∇F(p) = ∇Φ(ψ(p))  
-• directional derivatives DᵥF(p)
+Lesson 0012 extends this to **vector‑valued structural observables**:
 
-Lesson 0012 generalizes these ideas to **multi‑output structural functions**:
+    F : P → ℝ^m,
 
-    F : P → ℝ^m
+requiring the **Jacobian operator**, the ambient derivative of Φ at ψ(p).
 
-This requires the **Jacobian operator**, the matrix of all first‑order partial
-derivatives of F.
+As in Lesson 0011, all differentiation occurs in ℓ²; P remains discrete.
 
 ---
 
-## 2. Structural Vector‑Valued Functions
+## 2. Vector‑Valued Structural Observables
 
-Let:
+Let
 
-    F : P → ℝ^m
+    Φ : U → ℝ^m
 
-Examples:
+be defined on an open neighbourhood U ⊆ ℓ² containing ψ(P).  
+Define the structural observable:
 
-• structural signature vector  
-• multi‑degree profile  
-• block‑interaction metrics  
-• structural invariants encoded as m‑dimensional outputs
+    F(p) = Φ(ψ(p)).
 
-As in Lesson 0011, express F as:
+Injectivity of ψ ensures ψ(p) identifies p uniquely.  
+Differentiability properties come entirely from Φ.
 
-    F(p) = Φ(ψ(p))
-
-where:
-
-    Φ : ℓ² → ℝ^m
+**Dependence on extension.**  
+Different Φ₁ and Φ₂ may agree on ψ(P) but have different derivatives.  
+Thus JF(p) depends on the chosen representation F = Φ ∘ ψ.
 
 ---
 
-## 3. Displacement (from Lesson 0011)
+## 3. Admissible Structural Modifications
 
-Let p ∈ P and q be a structured partition obtained from p by a finite
-structural modification.
+Let M be a specified collection of structural modifications.  
+For p ∈ P, define:
 
-Define:
+    A(p) = {Δ ∈ M : p + Δ is defined and p + Δ ∈ P}.
 
-    δ = ψ(q) − ψ(p)
+For q = p + Δ ∈ P, define the displacement:
 
-This is the feature‑space displacement.
+    δ(p, q) = ψ(q) − ψ(p) ∈ ℓ².
 
----
-
-## 4. Jacobian Definition
-
-If Φ : ℓ² → ℝ^m is Fréchet differentiable at ψ(p), define the **Jacobian**:
-
-    JF(p) := DΦ(ψ(p))
-
-This is a linear operator:
-
-    JF(p) : ℓ² → ℝ^m
-
-mapping displacements δ to first‑order changes in F:
-
-    F(q) − F(p) ≈ JF(p)[δ]
-
-This is the correct Hilbert‑space definition.
+This is the only notion of “difference” used.
 
 ---
 
-## 5. Jacobian Matrix Representation
+## 4. Jacobian Operator
 
-Because ψ(p) has finite support, JF(p) can be represented as an m × N matrix
-with entries:
+If Φ is Fréchet differentiable at ψ(p), then its derivative
 
-    (JF(p))ₖ,ᵢⱼ = ∂Φₖ / ∂xᵢⱼ (ψ(p))
+    DΦ(ψ(p)) : ℓ² → ℝ^m
 
-where:
+is a bounded linear operator.  
+Define the **Jacobian operator** of F at p:
 
-• k indexes the output dimension  
-• (i, j) indexes the feature‑space coordinate  
-• xᵢⱼ is the coordinate of ψ(p)
+    JF(p) := DΦ(ψ(p)).
 
-This matrix is finite because ψ(p) has finitely many nonzero coordinates.
+For any v ∈ ℓ²:
+
+    JF(p)[v] = DΦ(ψ(p))[v].
+
+This is an ambient derivative; it does not assume any smooth structure on P.
 
 ---
 
-## 6. Examples
+## 5. Ambient Multi‑Directional Derivatives
+
+For v ∈ ℓ², define the ambient directional derivative:
+
+    D_v^amb F(p) = JF(p)[v].
+
+This is an m‑dimensional vector describing how Φ changes along v.  
+Such v need not correspond to any structural path in P.
+
+---
+
+## 6. Structural Finite Differences
+
+For q ∈ A(p):
+
+    ΔF(p; q) = F(q) − F(p) = Φ(ψ(q)) − Φ(ψ(p)).
+
+Fréchet differentiability gives the expansion:
+
+    Φ(ψ(p) + h)
+      = Φ(ψ(p)) + JF(p)[h] + r(h),
+
+where r(h)/‖h‖₂ → 0 as ‖h‖₂ → 0.
+
+For δ = δ(p, q):
+
+    F(q) − F(p)
+      = JF(p)[δ] + r(δ).
+
+**Discreteness qualification.**  
+Under positional one‑hot embeddings, admissible nonzero δ often satisfy
+‖δ‖₂ = √2 or another fixed value.  
+Thus δ may not approach 0.  
+The Jacobian term JF(p)[δ] is therefore an ambient linear estimate, not an
+intrinsic asymptotic derivative on P.
+
+---
+
+## 7. Matrix Representation
+
+Because DΦ(ψ(p)) is a bounded linear operator ℓ² → ℝ^m, it can be represented
+componentwise:
+
+    (JF(p))_k[v] = DΦ_k(ψ(p))[v],
+
+where Φ_k is the k‑th coordinate function.
+
+If Φ_k is twice continuously differentiable on U, then:
+
+    DΦ_k(ψ(p))[v]
+      = Σ_{i,j} (∂Φ_k/∂x_{ij})(ψ(p)) · v_{ij},
+
+with the understanding that only finitely many coordinates of ψ(p) are nonzero.
+
+This is an ambient representation; it does not imply ψ(P) is a manifold.
+
+---
+
+## 8. Examples
 
 ### Example 1 — Structural Signature Vector
 
-Let:
+Let
 
-    F(p) = (‖ψ(p)‖²₂, Σ dᵢ)
+    Φ(x) = (‖x‖₂²,  ⟨w, x⟩),
 
-Define:
-
-    Φ₁(x) = ‖x‖²₂
-    Φ₂(x) = Σᵢ Σⱼ j xᵢⱼ
+where w ∈ ℓ² is fixed.
 
 Then:
 
-    ∇Φ₁(x) = 2x
-    ∇Φ₂(x)ᵢⱼ = j
+    DΦ_1(x)[v] = 2⟨x, v⟩,
+    DΦ_2(x)[v] = ⟨w, v⟩.
 
 Thus:
 
-    JF(p) =
-    [
-      2ψ(p)
-      j-row
-    ]
+    JF(p)[v] = (2⟨ψ(p), v⟩,  ⟨w, v⟩).
 
-where “j-row” is the vector of j values at the unique nonzero coordinates.
+This is a valid Jacobian because both coordinate functionals are bounded.
 
 ---
 
-### Example 2 — Block Interaction Map
+### Example 2 — Linear Interaction Map
 
-Let:
+Let A : ℓ² → ℝ^m be a bounded linear operator and define:
 
-    F(p) = (d₁ + d₂, d₂ + d₃, …)
-
-This is a linear map in degree space.
-
-In feature space:
-
-    Φₖ(x) = Σᵢ Σⱼ Aₖᵢ xᵢⱼ
-
-for some interaction matrix A.
+    Φ(x) = A(x).
 
 Then:
-
-    ∇Φₖ(x)ᵢⱼ = Aₖᵢ
-
-Thus:
 
     JF(p) = A
 
-independent of p.
+for all p.  
+This includes block‑interaction metrics and other linear structural signatures.
 
 ---
 
-## 7. Directional Derivatives for Vector Outputs
+## 9. Ambient vs Structural Interpretation
 
-Given v ∈ ℓ², define:
+The Jacobian JF(p):
 
-    DᵥF(p) = JF(p)[v]
+• is an ambient derivative of Φ at ψ(p),  
+• depends on the chosen extension Φ,  
+• does not assume any tangent‑space structure on P,  
+• provides linear estimates of finite differences ΔF(p; q),  
+• is the correct tool for multi‑output sensitivity analysis.
 
-This is an m‑dimensional vector describing how each component of F changes
-when ψ(p) is perturbed along v.
-
----
-
-## 8. Interpretation
-
-The Jacobian:
-
-• generalizes gradients to vector outputs  
-• describes structural sensitivity across multiple channels  
-• enables multi‑dimensional structural optimization  
-• is the foundation for curvature (Lesson 0013)  
-• is the correct differential operator on ψ(P)
+Intrinsic Jacobians on P require additional geometric structure not yet defined.
 
 ---
 
-## 9. Summary
+## 10. Summary
 
-Lesson 0012 introduces:
+Lesson 0012 establishes:
 
-• vector‑valued structural functions F : P → ℝ^m  
-• Jacobian operator JF(p)  
-• matrix representation of JF(p)  
-• multi‑channel directional derivatives  
-• examples for signature vectors and interaction maps
+• vector‑valued observables F = Φ ∘ ψ,  
+• admissible structural modifications A(p),  
+• Jacobian operator JF(p) = DΦ(ψ(p)),  
+• ambient multi‑directional derivatives,  
+• structural finite differences ΔF(p; q),  
+• rigorous examples using bounded linear functionals.
 
-Lesson 0013 will introduce **Hessian operators** and **curvature** on ψ(P).
+This prepares for Lesson 0013, which introduces **Hessian operators** and
+second‑order ambient derivatives.
 
 
