@@ -1,100 +1,108 @@
-# Math Rendering Diagnostic — test.md
+# test2.md — Deep Math Rendering Diagnostic
 
-This file tests how GitHub handles backslashes, inline math, and KaTeX norms.
-
----
-
-## 1. Raw backslash tests
-
-Literal backslash:
-
-- `\|p\|`
-- `\\|p\\|`
-- `\\\|p\\\|`
-- `\\\\|p\\\\|`
-
-Rendered inline:
-
-- $\|p\|$
-- $\\|p\\|$
-- $\\\|p\\\|$
-- $\\\\|p\\\\|$
+This file determines exactly where backslashes are being removed.
 
 ---
 
-## 2. Absolute value vs norm
+## 1. Raw literal text (no math)
 
-Absolute value:
-
-- $|p|$
-
-Norm (various escapes):
-
-- $\|p\|$
-- $\\|p\\|$
-- $\\\\|p\\\\|$
+\|p\|
+\\|p\\|
+\\\\|p\\\\|
+\\\\\\|p\\\\\\|
 
 ---
 
-## 3. Subscript tests
+## 2. Inline math (raw)
 
-- $\|p\|_{\text{mix}}$
-- $\\|p\\|_{\text{mix}}$
-- $\\\\|p\\\\|_{\text{mix}}$
-
----
-
-## 4. Mixed norm expression (incremental complexity)
-
-### A. Minimal form
-- $\|p\|_{\text{mix}} = \alpha$
-
-### B. Two‑term form
-- $\|p\|_{\text{mix}} = \alpha\,\|p\|_{\deg}$
-
-### C. Full form (single inline)
-- $\|p\|_{\text{mix}} = \alpha\,\|p\|_{\deg} + \beta\,\|p\|_{\Delta} + \gamma\,\|p\|_{\text{adj}}$
-
-### D. Full form (double‑escaped)
-- $\\|p\\|_{\text{mix}} = \alpha\,\\|p\\|_{\deg} + \beta\,\\|p\\|_{\Delta} + \gamma\,\\|p\\|_{\text{adj}}$
-
-### E. Full form (quad‑escaped)
-- $\\\\|p\\\\|_{\text{mix}} = \alpha\,\\\\|p\\\\|_{\deg} + \beta\,\\\\|p\\\\|_{\Delta} + \gamma\,\\\\|p\\\\|_{\text{adj}}$
+$\|p\|$
+$\\|p\\|$
+$\\\\|p\\\\|$
+$\\\\\\|p\\\\\\|$
 
 ---
 
-## 5. Multi‑inline test
+## 3. Inline math inside HTML span
 
-Define: $\|p\|_{\text{mix}} = \alpha$ $\|p\|_{\deg} + \beta$ $\|p\|_{\Delta} + \gamma$ $\|p\|_{\text{adj}}$.
-
-Define: $\\|p\\|_{\text{mix}} = \alpha$ $\\|p\\|_{\deg} + \beta$ $\\|p\\|_{\Delta} + \gamma$ $\\|p\\|_{\text{adj}}$.
-
-Define: $\\\\|p\\\\|_{\text{mix}} = \alpha$ $\\\\|p\\\\|_{\deg} + \beta$ $\\\\|p\\\\|_{\Delta} + \gamma$ $\\\\|p\\\\|_{\text{adj}}$.
+<span>$\|p\|$</span>  
+<span>$\\|p\\|$</span>  
+<span>$\\\\|p\\\\|$</span>  
+<span>$\\\\\\|p\\\\\\|$</span>
 
 ---
 
-## 6. Control tests (known good)
+## 4. HTML entity escapes
 
-- $\alpha + \beta + \gamma$
-- $p^{\otimes n}$
-- $A(p^{\otimes n})$
-- $\deg(p)$
-- $\Delta(p)$
+&#92;|p&#92;|  
+&#92;&#92;|p&#92;&#92;|  
+&#92;&#92;&#92;|p&#92;&#92;&#92;|
+
+Inline:
+
+$&#92;|p&#92;|$  
+$&#92;&#92;|p&#92;&#92;|$  
+$&#92;&#92;&#92;|p&#92;&#92;&#92;|$
+
+---
+
+## 5. Code‑fenced math (GitHub sometimes preserves escapes here)
+
+```math
+\|p\|
+\\|p\\|
+\\\\|p\\\\|
+```
+
+---
+
+## 6. Script‑tag math (MathJax fallback)
+
+<script type="math/tex">
+\|p\|
+</script>
+
+<script type="math/tex">
+\\|p\\|
+</script>
+
+---
+
+## 7. Unicode norm symbol (no backslashes)
+
+‖p‖  
+Inline: $‖p‖$
+
+---
+
+## 8. Mixed norm expression (all methods)
+
+### A. Raw
+$\|p\|_{\text{mix}} = \alpha\,\|p\|_{\deg}$
+
+### B. Double‑escaped
+$\\|p\\|_{\text{mix}} = \alpha\,\\|p\\|_{\deg}$
+
+### C. HTML entity
+$&#92;|p&#92;|_{\text{mix}} = \alpha\,&#92;|p&#92;|_{\deg}$
+
+### D. Unicode fallback
+$‖p‖_{\text{mix}} = \alpha‖p‖_{\deg}$
 
 ---
 
 # Instructions for EF
 
-1. Paste this entire file into **test.md** in your GitHub repo.
-2. View the rendered page.
-3. Tell CO **which lines render correctly** and **which lines show literal text**.
+1. Paste this entire file into **test2.md**.
+2. View the rendered GitHub page.
+3. Report **exactly which lines render correctly**.
 
 CO will then determine:
 
-- whether your Markdown processor is stripping backslashes,
-- whether KaTeX is enabled,
-- whether your environment requires double‑escaping,
-- whether inline math is being parsed at all.
+- whether Markdown is stripping backslashes,
+- whether KaTeX is running at all,
+- whether HTML entity escapes survive,
+- whether Unicode norm symbols are required,
+- whether your environment supports MathJax fallback.
 
 Once CO has your results, CO will produce a **guaranteed‑rendering norm expression** for your environment.
 
