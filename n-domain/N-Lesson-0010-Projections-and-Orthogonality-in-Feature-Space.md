@@ -6,15 +6,15 @@ Feature-Space Decomposition Using the Positional Embedding ψ
 ## 1. Purpose
 
 This lesson defines projection and orthogonality entirely in feature space.
-Partitions are embedded into ℓ²(ℕ⁺×ℕ⁺) using the injective positional map:
+Partitions are embedded into ℓ²(ℕ⁺ × ℕ⁺) using the injective positional map:
 
-    ψ : N → ℓ²(ℕ⁺×ℕ⁺)
+    ψ : N → ℓ²(ℕ⁺ × ℕ⁺)
 
 All linear operations occur on ψ(p) and ψ(q), not on partitions directly.
 
 ---
 
-## 2. Projection Formula (Corrected)
+## 2. Projection Formula
 
 For structured partitions p and q, define the projection of ψ(p) onto the
 one-dimensional subspace spanned by ψ(q):
@@ -26,11 +26,11 @@ This formula requires:
 
     ψ(q) ≠ 0
 
-For nonempty partitions under ψ, this condition is automatically satisfied.
+For nonempty partitions, ψ(q) always has at least one nonzero coordinate.
 
 ---
 
-## 3. Residual Vector (Corrected)
+## 3. Residual Vector
 
 Define the residual:
 
@@ -45,7 +45,7 @@ Thus r is orthogonal to the feature direction ψ(q).
 Correct interpretation:
 
     r is orthogonal in feature space.
-    r is not “structurally independent” of q.
+    r is not structurally independent of q.
 
 ---
 
