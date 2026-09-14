@@ -1,11 +1,11 @@
 # N‑Lesson‑0019 — Structural Potential Landscapes and Epoch Transitions
-Discrete Energy Geometry and Epoch-Level Dynamics
+Rigorous Discrete Energy Geometry and Epoch-Level Dynamics
 
 ---
 
 ## 1. Purpose
 
-Lessons 0015–0018 introduced:
+Lessons 0015–0018 developed:
 
 • structural optimisation,  
 • structural flows,  
@@ -14,183 +14,224 @@ Lessons 0015–0018 introduced:
 
 Lesson 0019 develops **structural potential landscape theory**:
 
-• landscape geometry induced by F_λ,  
-• local minima, saddle regions, plateau complexes,  
-• energy barriers and escape paths,  
-• metastability and epoch transitions,  
-• landscape topology changes under λ.
+• landscape geometry induced by V_λ = F_λ,  
+• local minima, plateau complexes, saddle states,  
+• directional barrier heights and escape paths,  
+• metastability,  
+• epoch transitions via changes in landscape combinatorics.
 
-This is the discrete analogue of energy landscapes and epoch transitions in
-dynamical systems.
+All analysis is discrete; ambient calculus provides indicators only.
 
 ---
 
 ## 2. Structural Potential Landscape
 
-For each parameter λ, define the structural potential:
+For each parameter λ, define:
 
     V_λ(p) := F_λ(p).
 
-The **structural potential landscape** is the pair:
+The structural potential landscape is the pair:
 
     (P, V_λ),
 
 where P is the adjacency graph and V_λ assigns a scalar potential to each node.
 
-Key geometric objects:
+Key objects:
 
 • local minima,  
-• saddle regions,  
 • plateau complexes,  
+• saddle states and saddle sets,  
 • basins of attraction,  
-• energy barriers.
+• barrier heights.
 
 ---
 
-## 3. Local Minima and Basins
+## 3. Deterministic Update Rule
 
-A strong fixed point p is a **local minimum** if:
+To compute basins and transitions, fix a deterministic descent rule:
+
+    T_λ(p) := argmin_{q ∈ 𝒩(p)} V_λ(q),
+
+with lexicographic tie-breaking.
+
+Trajectories satisfy:
+
+    p_{n+1} = T_λ(p_n).
+
+Basins, plateaux, and saddle sets are defined relative to this rule.
+
+---
+
+## 4. Local Minima and Basins
+
+A state p is a **local minimum** if:
 
     V_λ(q) ≥ V_λ(p)   for all q ∈ 𝒩(p).
 
-The **basin of attraction** of p under T_λ is:
+The **basin of attraction** of p is:
 
-    Basin_λ(p) := { r ∈ P : every trajectory from r eventually reaches p }.
+    Basin_λ(p) := { r ∈ P : T_λ^n(r) = p for some n }.
 
-Basins partition P when T_λ is deterministic.
-
----
-
-## 4. Saddle Regions
-
-A node s is a **saddle region** if:
-
-• s is not a local minimum,  
-• but s lies on at least one minimal-energy path between two local minima.
-
-Formally, s is a saddle region if:
-
-    ∃ minima p₁, p₂ and a path γ from p₁ to p₂
-    such that s ∈ γ and
-    V_λ(s) = max_{r ∈ γ} V_λ(r).
-
-Saddle regions determine energy barriers.
+Basins form a partition under deterministic dynamics.
 
 ---
 
-## 5. Plateau Complexes
+## 5. Paths and Energy Geometry
 
-A **plateau complex** is a connected set S ⊆ P such that:
+Let G = (P, E) be the adjacency graph.
+
+### 5.1 Paths
+
+A finite path from a to b is a sequence:
+
+    γ = (r_0, r_1, …, r_m)
+
+with:
+
+    r_0 = a,   r_m = b,
+    {r_{k-1}, r_k} ∈ E.
+
+### 5.2 Path Elevation
+
+    H_λ(γ) := max_k V_λ(r_k).
+
+### 5.3 Communication Height
+
+    H_λ(a,b) := inf_{γ : a→b} H_λ(γ).
+
+In finite graphs, the infimum is attained.
+
+### 5.4 Minimal-Energy Path
+
+A path γ is minimal-energy if:
+
+    H_λ(γ) = H_λ(a,b).
+
+---
+
+## 6. Saddle States and Saddle Sets
+
+A **saddle state** is a single node; a **saddle region** is a set.
+
+Let p₁ and p₂ be distinct minima.
+
+A state s is a **barrier state** between p₁ and p₂ if:
+
+• s is an internal vertex of a minimal-energy path γ : p₁ → p₂,  
+• V_λ(s) = H_λ(p₁,p₂).
+
+The **saddle set** is:
+
+    Saddle_λ(p₁,p₂) := { s : s is a barrier state between p₁ and p₂ }.
+
+---
+
+## 7. Plateau Complexes
+
+A **plateau complex** is a maximal connected set S ⊆ P such that:
 
 • V_λ is constant on S,  
-• S contains no strict local minimum,  
 • S contains at least one weak fixed point.
 
-Plateau complexes allow lateral motion under T_λ and can produce cycles.
+Plateau complexes allow lateral motion under T_λ.
 
 ---
 
-## 6. Energy Barriers and Escape Paths
+## 8. Escape Paths and Shift-Invariant Barrier Heights
 
-For a local minimum p, define the **escape barrier**:
+Let p be a local minimum.
 
-    B_λ(p) := min over all paths γ leaving Basin_λ(p)
-              of max_{r ∈ γ} V_λ(r).
+An **escape path** is a minimal-energy path γ : p → q with q ∉ Basin_λ(p).
 
-An **escape path** is any path achieving this minimum.
+Define the **escape elevation**:
 
-If B_λ(p) is large, p is **metastable**.
+    E_λ(p) := min_{γ : p→q, q∉Basin_λ(p)} H_λ(γ).
 
-If B_λ(p) = 0, p is **fragile**.
+Define the **shift-invariant barrier height**:
 
----
+    B_λ(p) := E_λ(p) − V_λ(p).
 
-## 7. Metastability
+If no escape path exists:
 
-A local minimum p is **metastable** if:
-
-• p is stable under T_λ,  
-• but there exists a neighbouring region with lower potential reachable only
-  through a saddle region of higher potential.
-
-Metastability is common in discrete landscapes with plateau complexes.
+• Basin_λ(p) = P,  
+• E_λ(p) = V_λ(p),  
+• B_λ(p) = 0,  
+• p is globally stable.
 
 ---
 
-## 8. Epoch Transitions
+## 9. Static Metastability
 
-An **epoch transition** occurs at λ = λ* if, for every ε > 0, there exist
-parameters λ₋, λ₊ satisfying:
+A local minimum p is **statically metastable** if:
 
-    λ* − ε < λ₋ < λ* < λ₊ < λ* + ε
+• B_λ(p) > 0,  
+• escape paths exist but require elevation above V_λ(p).
 
-such that at least one of the following changes between λ₋ and λ₊:
-
-• the set of local minima,  
-• the set of saddle regions,  
-• the topology of basins,  
-• the escape barriers B_λ(p),  
-• the plateau complexes,  
-• the metastable states,  
-• the transition correspondence T_λ.
-
-Epoch transitions are landscape-level changes, not merely fixed-point changes.
+This is purely structural; stochastic metastability is not considered.
 
 ---
 
-## 9. Landscape Topology Changes
+## 10. Landscape Combinatorics (Replacing “Topology”)
 
-Topology changes include:
+Replace undefined “topology” with:
 
-• creation or annihilation of local minima,  
-• merging or splitting of basins,  
-• creation or destruction of saddle regions,  
-• formation or dissolution of plateau complexes,  
-• changes in minimal-energy paths.
+• basin decomposition,  
+• basin adjacency graph,  
+• connected-component structure,  
+• graph-isomorphism type,  
+• sublevel-set connectivity.
 
-These are discrete analogues of phase transitions.
+Define the **sublevel graph**:
+
+    G_λ^a := G[{ p : V_λ(p) ≤ a }].
+
+Epoch transitions correspond to changes in connected components of G_λ^a.
 
 ---
 
-## 10. Finite-State Example
+## 11. Finite-State Example (Corrected)
 
-Let P = {A, B, C, D} with adjacency:
+Let P = {A, B, C} with adjacency:
 
-    A ↔ B ↔ C ↔ D.
+    A ↔ B ↔ C.
 
-Define parameterized potentials:
+Define:
 
     V_λ(A) = 0,
     V_λ(B) = λ,
-    V_λ(C) = 1,
-    V_λ(D) = 2.
+    V_λ(C) = 1.
 
-For λ < 0:
+### λ < 0
+
+• B is the unique local minimum.  
+• Basin(B) = {A, B, C}.  
+• No saddle states (only one minimum).
+
+### λ = 0
+
+• A and B form a plateau complex (V_0(A)=V_0(B)=0).  
+• Basin depends on tie-breaking.  
+• Transition point: attractor + plateau transition.
+
+### 0 < λ < 1
 
 • A is the unique local minimum.  
-• Basin(A) = {A, B, C, D}.  
-• No saddle regions.
+• Basin(A) = {A, B, C}.  
+• No saddle states.
 
-For λ = 0:
+### λ ≥ 1
 
-• B becomes a weak fixed point.  
-• A and B form a plateau complex.
+• C enters the local-minimum set.  
+• A remains a local minimum.  
+• Basin decomposition splits.  
+• B becomes a barrier state between A and C.  
+• Transition point: basin-splitting + barrier-state transition.
 
-For λ > 1:
-
-• C becomes a local minimum.  
-• Basin structure splits: Basin(A) and Basin(C).  
-• B becomes a saddle region between A and C.
-
-Thus λ = 1 is an **epoch transition**:
-
-• new local minimum appears,  
-• basins split,  
-• saddle region emerges.
+Thus λ = 0 and λ = 1 are **epoch transition points**.
 
 ---
 
-## 11. Weighted Quadratic Landscapes
+## 12. Weighted Quadratic Landscapes
 
 For:
 
@@ -198,13 +239,18 @@ For:
 
 require:
 
-    w_{ij}(λ) ∈ ℓ∞.
+    sup_{i,j} |w_{ij}(λ)| < ∞.
 
-Landscape topology changes occur when weight patterns change sign or magnitude.
+For operator-norm continuity:
+
+    sup_{i,j} |w_{ij}(λ₁) − w_{ij}(λ₂)| → 0 as λ₁ → λ₂.
+
+Changes in w_{ij}(λ) **may** produce transitions, but only if minima, basins,
+plateau complexes, or barrier states change.
 
 ---
 
-## 12. Linear Functional Landscapes
+## 13. Linear Functional Landscapes
 
 For:
 
@@ -214,21 +260,21 @@ require:
 
     g_λ ∈ ℓ².
 
-Changes in the sign pattern of P_λ(p,q) may alter local minima and basins,
-producing epoch transitions.
+Changes in the sign pattern of P_λ(p,q) may alter minima and basins, producing
+epoch transitions.
 
 ---
 
-## 13. Summary
+## 14. Summary
 
 Lesson 0019 establishes:
 
-• structural potential landscapes (P, V_λ),  
-• local minima, saddle regions, plateau complexes,  
-• energy barriers and escape paths,  
-• metastability,  
-• epoch transitions via landscape topology changes,  
-• finite-state examples illustrating basin splitting and saddle emergence.
+• paths, elevations, communication heights, minimal-energy paths,  
+• saddle states, saddle sets, plateau complexes,  
+• escape elevations and shift-invariant barrier heights,  
+• static metastability,  
+• epoch transitions via landscape combinatorics,  
+• corrected finite-state transitions at λ=0 and λ=1.
 
 This prepares for Lesson 0020 on **structural phase geometry and multi-epoch
 composition**.
