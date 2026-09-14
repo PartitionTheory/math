@@ -18,22 +18,18 @@ Operators may change:
 
 ---
 
-## 2. Left-Invertibility (Corrected)
+## 2. Left-Invertibility (CO-Premium Corrected)
 
-An operator A is left-invertible when there exists B such that:
+Left-invertibility means that every input can be recovered from its image:
 
-    B ∘ A = id
-
-This means:
-
-    Every input x can be recovered from its image A(x)
-    because B(A(x)) = x.
+    B(A(x)) = x  for all x in the domain
 
 Consequently:
 
-    A is injective.
+    A is injective
 
-Left-invertibility does **not** imply surjectivity.
+Left-invertibility guarantees recoverability of inputs but does not guarantee
+surjectivity.
 
 Example: degree increment
 
@@ -52,7 +48,7 @@ Thus:
 
 ## 3. Full Reversibility (Two-Sided)
 
-An operator A is fully reversible when:
+A is fully reversible iff:
 
     B ∘ A = id
     A ∘ B = id
@@ -60,7 +56,6 @@ An operator A is fully reversible when:
 Equivalently:
 
     A is bijective
-    B = A⁻¹
 
 Examples:
 
@@ -146,11 +141,11 @@ Irreversible.
 
 This lesson establishes:
 
-• left-invertibility implies injectivity  
-• full reversibility requires bijectivity  
-• irreversibility arises from non-bijectivity  
-• collapse π is irreversible because it is not injective  
-• correct operator classification for later structural dynamics  
+• left-invertibility ⇒ injective  
+• full reversibility ⇒ bijective  
+• collapse π ⇒ surjective but not injective ⇒ irreversible  
+• degree increment ⇒ injective but not surjective ⇒ left-invertible  
+• block permutations ⇒ bijective ⇒ fully reversible  
 
 This prepares the foundation for concatenation (Lesson 0004).
 
