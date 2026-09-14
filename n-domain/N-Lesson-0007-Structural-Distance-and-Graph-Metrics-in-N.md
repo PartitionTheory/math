@@ -28,8 +28,8 @@ From Lesson 0006:
 $$
 E(p) =
 \{
-  (p^{\otimes n},\; p^{\otimes (n+1)}),\;
-  (p^{\otimes n},\; A(p^{\otimes n}))
+  (p^{\otimes n}, p^{\otimes (n+1)}),
+  (p^{\otimes n}, A(p^{\otimes n}))
   \mid n \in \mathbb{N}^{+}
 \}.
 $$
