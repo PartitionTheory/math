@@ -54,11 +54,12 @@ Edges arise from two operators:
 Define the edge set:
 
 $$
-E(p) = \big\{
-(p^{\otimes n}, p^{\otimes (n+1)}),\;
-(p^{\otimes n}, A(p^{\otimes n}))
-\;\big|\; n \in \mathbb{N}^{+}
-\big\}.
+E(p) =
+\{
+(p^{\otimes n},\; p^{\otimes (n+1)}),\;
+(p^{\otimes n},\; A(p^{\otimes n}))
+\mid n \in \mathbb{N}^{+}
+\}.
 $$
 
 ### 2.3 Graph Definition
