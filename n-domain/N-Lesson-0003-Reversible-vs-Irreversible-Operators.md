@@ -5,7 +5,7 @@ Injectivity, Surjectivity, and Structural Information Loss
 
 ## 1. Operators on Structured Partitions
 
-An operator A acts on structured partitions:
+An operator acts on structured partitions:
 
     A : N → N
 
@@ -18,43 +18,54 @@ Operators may change:
 
 ---
 
-## 2. Left-Reversibility
+## 2. Left-Invertibility (Corrected)
 
-An operator A is left-reversible when there exists B such that:
+An operator A is left-invertible when there exists B such that:
 
     B ∘ A = id
 
-Left-reversibility means every output of A has a unique preimage under B.
+This means:
 
-Examples:
+    Every input x can be recovered from its image A(x)
+    because B(A(x)) = x.
 
-• block permutations (bijective)  
-• degree increment on ℕ⁺ (injective but not surjective)  
+Consequently:
 
-Degree increment:
+    A is injective.
+
+Left-invertibility does **not** imply surjectivity.
+
+Example: degree increment
 
     A(d) = d + 1
 
-is injective, so a left inverse exists on its image:
+Left inverse on its image:
 
     B(d) = d − 1
 
-but A is not surjective, so B ∘ A = id holds, while A ∘ B ≠ id.
+Thus:
+
+    B ∘ A = id
+    A ∘ B ≠ id
 
 ---
 
-## 3. Full Reversibility
+## 3. Full Reversibility (Two-Sided)
 
 An operator A is fully reversible when:
 
-    B ∘ A = id   and   A ∘ B = id
+    B ∘ A = id
+    A ∘ B = id
 
-Equivalently, A is bijective and B = A⁻¹.
+Equivalently:
+
+    A is bijective
+    B = A⁻¹
 
 Examples:
 
 • block permutations  
-• reordering operators  
+• fixed reordering operators  
 
 Full reversibility allows negative iterates and reversible dynamics.
 
@@ -68,54 +79,78 @@ An operator A is irreversible when no operator B satisfies:
 
 Irreversibility arises from information loss.
 
-Examples:
+Example: collapse map
 
-• merging blocks  
-• deleting blocks  
-• collapse map π  
-
-Collapse:
-
-    π(d₁,…,dₖ) = Σᵢ dᵢ
-
-is not injective, so π has no global left inverse.
-
-Distinct structured partitions can collapse to the same degree.
-
----
-
-## 5. Injectivity vs Surjectivity
-
-Injective operators preserve enough structure for left-recovery.
-
-Surjective operators ensure full coverage of the codomain.
-
-Bijective operators provide full reversibility.
+    π(p) = d₁ + d₂ + … + dₖ
 
 Collapse is:
 
-• surjective onto ℕ⁺  
+• surjective  
 • not injective  
 • irreversible  
 
-Degree increment is:
+Distinct structured partitions can collapse to the same total degree.
 
-• injective  
-• not surjective  
-• left-reversible but not fully reversible  
+Thus:
+
+    π has no left inverse on all of N.
 
 ---
 
-## 6. Summary
+## 5. Injectivity, Surjectivity, Bijectivity
+
+Injective:
+
+    A(x) = A(y) implies x = y
+
+Surjective:
+
+    For every y in N, there exists x with A(x) = y
+
+Bijective:
+
+    A is both injective and surjective
+
+Reversibility requires bijectivity.
+
+Irreversibility occurs when A is not bijective.
+
+---
+
+## 6. Examples
+
+### Degree Increment
+
+    A(d) = d + 1
+
+Injective, not surjective.  
+Left-invertible, not fully reversible.
+
+### Block Permutation
+
+    A(b₁, b₂, …, bₖ) = (bₖ, b₁, …, bₖ₋₁)
+
+Bijective.  
+Fully reversible.
+
+### Collapse
+
+    π(d₁, d₂, …, dₖ) = d₁ + d₂ + … + dₖ
+
+Surjective, not injective.  
+Irreversible.
+
+---
+
+## 7. Summary
 
 This lesson establishes:
 
-• left-reversibility (B ∘ A = id)  
-• full reversibility (A bijective)  
-• irreversibility via non-injectivity  
-• collapse π as a canonical irreversible operator  
-• correct behavior of degree increment and permutations  
+• left-invertibility implies injectivity  
+• full reversibility requires bijectivity  
+• irreversibility arises from non-bijectivity  
+• collapse π is irreversible because it is not injective  
+• correct operator classification for later structural dynamics  
 
-These concepts prepare the foundation for concatenation (Lesson 0004),
-structural powers (Lesson 0005), and geometric operators (Lessons 0008–0010).
+This prepares the foundation for concatenation (Lesson 0004).
 
