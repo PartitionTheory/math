@@ -1,204 +1,90 @@
 # N‑Lesson‑0003 — Reversible vs Irreversible Operators
-### Formal Operator Theory in N and $N^{-1}$
+Formal Operator Theory on Structured Partitions
 
 ---
 
-## 0. Purpose
+## 1. Operators on N
 
-This lesson establishes the **operator‑theoretic foundation** of the N‑Domain:
+An operator A acts on structured partitions:
 
-- reversible operators in N  
-- irreversible operators in $N^{-1}$  
-- bijectivity vs non‑injectivity  
-- consequences for algebra, composition, and dynamics  
+    A : N → N
 
-The conceptual lessons described these ideas narratively; this lesson
-provides the rigorous mathematical framework.
+Operators may modify:
 
----
-
-## 1. Operators in N
-
-The domain N is:
-
-$$N = (\mathcal{P}, \preceq, A, C).$$
-
-Operators in N act on partitions:
-
-$$A : \mathcal{P} \to \mathcal{P}.$$
-
-### 1.1 Reversible Operators
-
-An operator $R$ on N is **reversible** iff:
-
-$$R \text{ is bijective.}$$
-
-Equivalently:
-
-- $R$ is injective  
-- $R$ is surjective  
-- $R^{-1}$ exists  
-- $R^{-1}$ is unique  
-
-### 1.2 Successor Operator
-
-The successor operator $A$ defined in Lesson 0001 is reversible because:
-
-1. Each elementary move is bijective.  
-2. The operator is restricted to reversible moves only.  
-3. Therefore:
-
-$$A^{-1} \text{ exists and is unique.}$$
-
-### 1.3 Consequences of Reversibility
-
-If $R$ is reversible:
-
-- **Composition is reversible**  
-  $$R \circ R^{-1} = id.$$
-
-- **Iterates are reversible**  
-  $$R^n \text{ is bijective for all } n \in \mathbb{Z}.$$
-
-- **Negative powers are valid**  
-  $$R^{-n} = (R^{-1})^n.$$
-
-This corrects the conceptual Ω operator, which assumed reversibility
-without proof.
+• block degrees  
+• block count  
+• block ordering  
+• structural relationships  
 
 ---
 
-## 2. Operators in $N^{-1}$
+## 2. Reversible Operators
 
-The boundary domain is:
+An operator A is reversible when there exists an operator B such that:
 
-$$N^{-1} = \mathbb{N}^{+}.$$
+    B(A(p)) = p
 
-Operators in $N^{-1}$ act on degrees:
+for every partition p ∈ N.
 
-$$I : N^{-1} \to N^{-1}.$$
+This is **left-invertibility**.
 
-### 2.1 Irreversible Operators
+Reversible operators preserve enough structure that the original partition
+can be recovered exactly.
 
-An operator $I$ on $N^{-1}$ is **irreversible** iff:
+Examples of reversible transformations:
 
-$$I \text{ is not injective.}$$
-
-Equivalently:
-
-- multiple inputs map to the same output  
-- information is lost  
-- $I^{-1}$ does not exist  
-
-### 2.2 Collapse Operator
-
-The collapse operator is:
-
-$$\pi : N \to N^{-1}, \qquad \pi(p) = \deg(p).$$
-
-As proven in Lesson 0002:
-
-- $\pi$ is surjective  
-- $\pi$ is not injective  
-- therefore $\pi$ is irreversible  
-
-### 2.3 Consequences of Irreversibility
-
-If $I$ is irreversible:
-
-- **No inverse exists**  
-  $$I^{-1} \text{ does not exist.}$$
-
-- **Negative powers are undefined**  
-  $$I^{-n} \text{ is meaningless.}$$
-
-- **Composition destroys information**  
-  $$I \circ I \circ I \text{ collapses structure progressively.}$$
-
-- **Iterates converge to fixed numeric patterns**  
-  (e.g., repeated degree shifts)
-
-This formalizes the conceptual claim that $N^{-1}$ is a “collapsed”
-domain.
+• degree increment  
+• degree decrement (when invertible)  
+• block permutation  
+• structural reordering  
 
 ---
 
-## 3. Comparison Table
+## 3. Irreversible Operators
 
-| Property | N (Reversible) | $N^{-1}$ (Irreversible) |
-|---------|-----------------|--------------------------|
-| Domain | partitions | degrees |
-| Operator type | bijective | non‑injective |
-| Inverse | exists | does not exist |
-| Negative powers | valid | invalid |
-| Information | preserved | lost |
-| Structure | maintained | collapsed |
+An operator A is irreversible when **no** operator B satisfies:
+
+    B(A(p)) = p
+
+Irreversibility arises when information is lost.
+
+Examples:
+
+• merging blocks  
+• deleting blocks  
+• collapsing structure  
+• the collapse map π itself
+
+Irreversible operators destroy structural detail that cannot be reconstructed.
 
 ---
 
-## 4. Examples
+## 4. Relationship to Collapse
 
-### Example 1: Reversible Shift in N
+Collapse:
 
-Let:
+    π(p) = deg(b₁) + deg(b₂) + … + deg(bₖ)
 
-$$p = (\square^2, \square^3).$$
+is **irreversible** because:
 
-A reversible shift:
+• block count is lost  
+• block degrees individually are lost  
+• ordering is lost  
 
-$$A(p) = (\square^3, \square^2).$$
-
-Then:
-
-$$A^{-1}(A(p)) = p.$$
-
-### Example 2: Irreversible Collapse
-
-$$\pi((\square^2, \square^3)) = 5.$$
-
-$$\pi((\square^5)) = 5.$$
-
-Different partitions collapse to the same degree.
-
-### Example 3: Irreversible Numeric Shift
-
-Define:
-
-$$I(d) = d + 1.$$
-
-Then:
-
-$$I(4) = 5, \qquad I(5) = 6.$$
-
-But:
-
-$$I^{-1}(5) \text{ does not exist uniquely.}$$
+Thus no operator B can recover p from π(p).
 
 ---
 
 ## 5. Summary
 
-Reversible operators:
+This lesson establishes:
 
-- act on N  
-- are bijective  
-- preserve structure  
-- support inverses and negative powers  
+• the formal definition of operators on N  
+• reversible operators via left-inverses  
+• irreversible operators via structural information loss  
+• collapse as a canonical irreversible operator
 
-Irreversible operators:
-
-- act on $N^{-1}$  
-- are non‑injective  
-- collapse structure  
-- do not support inverses  
-
-This distinction is foundational for all future operator theory.
-
----
-
-## 6. Next Lesson
-
-**N‑Lesson‑0004 — Structural Multiplication in N**  
-Formalizing the operator‑based multiplication $p \times_s q$ with correct
-type signatures, closure, and proofs.
+These concepts are required for structural multiplication (Lesson 0004),
+power chains (Lesson 0005), and the geometric operators defined in
+Lessons 0008–0010.
 
