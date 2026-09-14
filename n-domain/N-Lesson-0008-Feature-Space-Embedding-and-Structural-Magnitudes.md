@@ -1,139 +1,105 @@
-# N‑Lesson‑0008 — Feature‑Space Embedding and Structural Magnitudes
-Feature‑Space Embedding φ : 𝒫 → ℓ²
+# N‑Lesson‑0008 — Feature-Space Embedding and Structural Magnitudes
+Injective Positional One-Hot Embedding into ℓ²(ℕ⁺×ℕ⁺)
 
 ---
 
-## 0. Purpose
+## 1. Purpose
 
-Partitions do not form a vector space, so norms and distances cannot be
-defined directly on 𝒫. This lesson introduces a feature‑space embedding:
-
-    φ(p) ∈ ℓ²
-
-which allows valid definitions of:
-
-• structural norms  
-• structural distances  
-• structural magnitudes  
-
-All later geometric lessons depend on this embedding.
+Structured partitions do not form a vector space. To apply linear geometry,
+we embed them into an ambient Hilbert space. This lesson defines the correct
+injective feature map ψ that preserves block order and degree.
 
 ---
 
-## 1. The Feature Map φ
+## 2. Target Space
 
-Let a partition be:
+Let ℓ²(ℕ⁺×ℕ⁺) be the space of square-summable arrays indexed by:
 
-    p = (b₁, b₂, …, bₖ)
+    (i, j) ∈ ℕ⁺ × ℕ⁺
 
-Each block bᵢ has a degree deg(bᵢ).
+with finite support.
 
-Define the feature map:
+Each coordinate corresponds to:
 
-    φ(p) = (c₁(p), c₂(p), c₃(p), …) ∈ ℓ²
-
-where:
-
-    cⱼ(p) = number of blocks of degree j in p
-
-Because partitions are finite, φ(p) has only finitely many non‑zero
-coordinates and is always square‑summable.
+• i = block position  
+• j = block degree  
 
 ---
 
-## 2. Structural Norms (Valid)
+## 3. Positional One-Hot Embedding (Injective)
 
-All norms are ℓ² norms:
+For a structured partition:
 
-    ‖p‖ = ‖φ(p)‖₂
+    p = (d₁, d₂, …, dₖ)
 
-Explicitly:
+define ψ(p) by:
 
-    ‖φ(p)‖₂ = sqrt( Σⱼ cⱼ(p)² )
+    ψ(p)ᵢⱼ = 1 if the i-th block of p has degree j
+    ψ(p)ᵢⱼ = 0 otherwise
 
-This replaces the invalid “degree norm”, “adjacency norm”, and “mixed norm”.
+Thus ψ(p) has exactly one nonzero entry in each row i.
 
----
+Example:
 
-## 3. Structural Distances
+    p = (2, 1, 3)
 
-Distance between partitions is:
+produces nonzero entries at:
 
-    d(p, q) = ‖φ(p) − φ(q)‖₂
-
-This is a true metric because ℓ² is a normed vector space.
-
----
-
-## 4. Structural Magnitude
-
-Define magnitude:
-
-    M(p) = ‖φ(p)‖₂
-
-Interpretation:
-
-• partitions with many blocks have large magnitude  
-• partitions with concentrated degree distributions have larger magnitude  
-• partitions with sparse distributions have smaller magnitude  
+    (1,2), (2,1), (3,3)
 
 ---
 
-## 5. Collapse Behavior
+## 4. Injectivity
 
-Under collapse:
+If ψ(p) = ψ(q), then for every i:
 
-    π(p) = deg(p)
+• the unique j with ψ(p)ᵢⱼ = 1  
+• equals the unique j with ψ(q)ᵢⱼ = 1  
 
-The feature map collapses to:
+Thus dᵢ = eᵢ for all i, so p = q.
 
-    φ(p) ↦ (deg(p))
+Therefore:
 
-Thus:
+    ψ is injective.
 
-    ‖φ(p)‖₂ ↦ |deg(p)|
-
-Structural magnitude collapses to absolute degree.
+This corrects the non-injective histogram map.
 
 ---
 
-## 6. Examples
+## 5. Structural Magnitudes in Feature Space
 
-### Example 1
+Define the feature-space distance:
 
-Partition:
+    dψ(p, q) = ‖ψ(p) − ψ(q)‖₂
 
-    p = (b₁, b₂, b₃)
+Because ψ is injective and ℓ² is a Hilbert space:
 
-with degrees:
+• dψ is a true metric  
+• dψ(p, q) = 0 implies p = q  
+• dψ(p, q) > 0 for distinct partitions  
 
-    1, 1, 3
+This replaces the earlier pseudometric.
 
-Then:
+---
 
-    φ(p) = (2, 0, 1, 0, 0, …)
+## 6. Interpretation
 
-Norm:
+ψ preserves:
 
-    ‖p‖ = sqrt( 2² + 0² + 1² ) = sqrt(5)
+• block order  
+• block degree  
+• block count  
 
-### Example 2
+ψ does not impose vector-space structure on partitions; it only embeds them
+into a space where linear geometry is available.
 
-Partition:
+Structural magnitudes such as:
 
-    q = (b₁, b₂)
+• degree  
+• block complexity  
+• positional variation  
 
-with degrees:
-
-    1, 3
-
-Then:
-
-    φ(q) = (1, 0, 1, 0, …)
-
-Distance:
-
-    d(p, q) = sqrt( (2−1)² + (1−1)² ) = 1
+become geometric quantities in ℓ².
 
 ---
 
@@ -141,17 +107,12 @@ Distance:
 
 This lesson establishes:
 
-• a valid vector‑space embedding  
-• valid norms  
-• valid distances  
-• valid magnitudes  
+• positional one-hot embedding ψ  
+• injectivity of ψ  
+• ℓ²(ℕ⁺×ℕ⁺) as the ambient Hilbert space  
+• true metric dψ(p, q) = ‖ψ(p) − ψ(q)‖₂  
+• correct foundation for inner products (Lesson 0009)  
+• correct foundation for projections (Lesson 0010)
 
-This embedding is required for inner products, angles, projections, and
-orthogonal decomposition in Lessons 0009–0010.
-
----
-
-## 8. Next Lesson
-
-N‑Lesson‑0009 (Unicode Edition) — Structural Inner Products in Feature Space
+This completes the geometric entry point for N.
 
