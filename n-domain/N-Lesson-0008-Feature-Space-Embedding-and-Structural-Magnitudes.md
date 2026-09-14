@@ -1,32 +1,31 @@
 # N‑Lesson‑0008 — Feature-Space Embedding and Structural Magnitudes
-Injective Positional One-Hot Embedding into ℓ²(ℕ⁺×ℕ⁺)
+Injective Positional One-Hot Embedding into ℓ²(ℕ⁺ × ℕ⁺)
 
 ---
 
 ## 1. Purpose
 
-Structured partitions do not form a vector space. To apply linear geometry,
-we embed them into an ambient Hilbert space. This lesson defines the correct
-injective feature map ψ that preserves block order and degree.
+Structured partitions do not form a vector space.  
+To apply linear geometry, we embed them into an ambient Hilbert space.
+
+This lesson defines the injective positional feature map ψ that preserves
+block order and degree.
 
 ---
 
 ## 2. Target Space
 
-Let ℓ²(ℕ⁺×ℕ⁺) be the space of square-summable arrays indexed by:
+The target space is:
 
-    (i, j) ∈ ℕ⁺ × ℕ⁺
+    ℓ²(ℕ⁺ × ℕ⁺)
 
-with finite support.
+This space contains all square-summable arrays indexed by pairs (i, j).
 
-Each coordinate corresponds to:
-
-• i = block position  
-• j = block degree  
+The image of ψ(p) has **finite support**, so ψ(p) ∈ ℓ².
 
 ---
 
-## 3. Positional One-Hot Embedding (Injective)
+## 3. Positional One-Hot Embedding
 
 For a structured partition:
 
@@ -43,7 +42,7 @@ Example:
 
     p = (2, 1, 3)
 
-produces nonzero entries at:
+Nonzero coordinates:
 
     (1,2), (2,1), (3,3)
 
@@ -56,7 +55,9 @@ If ψ(p) = ψ(q), then for every i:
 • the unique j with ψ(p)ᵢⱼ = 1  
 • equals the unique j with ψ(q)ᵢⱼ = 1  
 
-Thus dᵢ = eᵢ for all i, so p = q.
+Thus:
+
+    p = q
 
 Therefore:
 
@@ -66,9 +67,24 @@ This corrects the non-injective histogram map.
 
 ---
 
-## 5. Structural Magnitudes in Feature Space
+## 5. Structural Magnitudes
 
-Define the feature-space distance:
+Define the feature-space norm:
+
+    ‖ψ(p)‖₂ = sqrt(⟨ψ(p), ψ(p)⟩)
+
+Because ψ(p) has exactly k nonzero entries (one per block):
+
+    ‖ψ(p)‖₂ = √k
+
+Thus the norm measures **block count**, not degree distribution or positional
+variation by itself.
+
+---
+
+## 6. Induced Metric
+
+Define:
 
     dψ(p, q) = ‖ψ(p) − ψ(q)‖₂
 
@@ -82,7 +98,7 @@ This replaces the earlier pseudometric.
 
 ---
 
-## 6. Interpretation
+## 7. Interpretation
 
 ψ preserves:
 
@@ -90,29 +106,29 @@ This replaces the earlier pseudometric.
 • block degree  
 • block count  
 
-ψ does not impose vector-space structure on partitions; it only embeds them
-into a space where linear geometry is available.
+ψ does not impose vector-space structure on partitions; it embeds them into a
+space where linear geometry is available.
 
 Structural magnitudes such as:
 
-• degree  
-• block complexity  
+• block count  
 • positional variation  
+• degree placement  
 
 become geometric quantities in ℓ².
 
 ---
 
-## 7. Summary
+## 8. Summary
 
 This lesson establishes:
 
-• positional one-hot embedding ψ  
-• injectivity of ψ  
-• ℓ²(ℕ⁺×ℕ⁺) as the ambient Hilbert space  
+• injective positional one-hot embedding ψ  
+• correct ℓ² domain statement  
+• correct norm interpretation ‖ψ(p)‖₂ = √k  
 • true metric dψ(p, q) = ‖ψ(p) − ψ(q)‖₂  
-• correct foundation for inner products (Lesson 0009)  
-• correct foundation for projections (Lesson 0010)
+• geometric foundation for inner products (Lesson 0009)  
+• geometric foundation for projections (Lesson 0010)
 
-This completes the geometric entry point for N.
+This completes the structural entry point for feature-space geometry.
 
