@@ -14,7 +14,7 @@ Lessons 0015–0017 introduced:
 Lesson 0018 develops **structural bifurcation theory**:
 
 • parameterized objective families F_λ,  
-• stability changes under λ-variation,  
+• changes in fixed-point count or stability under λ,  
 • adjacency-based bifurcation types,  
 • multi-scale transitions under adjacency refinement.
 
@@ -24,7 +24,7 @@ All bifurcation analysis is discrete; ambient calculus provides guidance.
 
 ## 2. Parameterized Objective Families
 
-Let λ ∈ Λ be a real parameter (or finite parameter set).
+Let λ ∈ Λ be a real parameter.
 
 Define a family of objectives:
 
@@ -52,31 +52,29 @@ A fixed point at parameter λ satisfies:
 
     D_λ(p) = {p}.
 
-Define the **fixed-point set**:
+Define:
 
     Fix(λ) := { p ∈ P : D_λ(p) = {p} }.
 
 A **bifurcation** occurs at λ = λ* if:
 
-• Fix(λ) changes discontinuously at λ*,  
-• or the stability of a fixed point changes at λ*.
+• the number of fixed points changes, or  
+• the stability classification of one or more fixed points changes.
+
+This definition is precise and appropriate for discrete systems.
 
 ---
 
 ## 4. Structural Stability Under λ
 
-A fixed point p is **structurally stable at λ** if:
+A fixed point p is **structurally stable at λ** if there exists an adjacency
+neighbourhood U of p such that:
 
-there exists an adjacency neighbourhood U of p such that  
-every trajectory starting in U under F_λ remains in U and converges to p.
+• every trajectory starting in U under F_λ remains in U,  
+• and every such trajectory converges to p.
 
-Stability may change as λ varies.
-
-A **stability transition** occurs when:
-
-• p ∈ Fix(λ) for λ < λ*,  
-• p ∈ Fix(λ) for λ > λ*,  
-• but p is stable for λ < λ* and unstable for λ > λ*.
+A **stability transition** occurs when p is stable for λ < λ* and unstable for
+λ > λ*, or vice versa.
 
 ---
 
@@ -93,50 +91,42 @@ We define discrete analogues of classical bifurcations.
 
 ---
 
-### 5.1 Saddle-Node Bifurcation (Discrete)
+### 5.1 Saddle-Node Bifurcation (Discrete Analogue)
 
 A **discrete saddle-node bifurcation** occurs at λ = λ* if:
 
-• two fixed points p₁, p₂ exist for λ < λ*,  
-• they collide into a single fixed point p* at λ*,  
-• and no fixed point exists for λ > λ*.
+• two fixed points exist for λ < λ*,  
+• one fixed point exists at λ*,  
+• no fixed point exists for λ > λ*.
 
-Adjacency interpretation:
+This describes creation/annihilation of fixed points in the adjacency graph.
 
-• p₁ and p₂ differ by one adjacency step,  
-• their basins merge at λ*,  
-• the merged basin disappears for λ > λ*.
+No symmetry or smoothness assumptions are required.
 
 ---
 
-### 5.2 Pitchfork Bifurcation (Discrete)
+### 5.2 Pitchfork Bifurcation (Discrete Analogue)
 
 A **discrete pitchfork bifurcation** occurs at λ = λ* if:
 
 • a single stable fixed point p exists for λ < λ*,  
 • at λ* it becomes unstable,  
-• and two new stable fixed points p₁, p₂ appear in adjacent directions.
+• and two distinct neighbouring branches q₁, q₂ become stable for λ > λ*.
 
-Adjacency interpretation:
-
-• p has two symmetric neighbours q₁, q₂,  
-• P_λ(p,q₁) and P_λ(p,q₂) change sign at λ*,  
-• stability shifts from p to q₁ and q₂.
+No symmetry assumption is made; only the emergence of two distinct stable
+neighbouring directions is required.
 
 ---
 
-### 5.3 Transcritical Bifurcation (Discrete)
+### 5.3 Transcritical Bifurcation (Discrete Analogue)
 
 A **discrete transcritical bifurcation** occurs at λ = λ* if:
 
-• two fixed points p and q exchange stability,  
-• p stable for λ < λ*, unstable for λ > λ*,  
-• q unstable for λ < λ*, stable for λ > λ*.
+• two fixed points p and q exist for λ near λ*,  
+• p is stable for λ < λ* and unstable for λ > λ*,  
+• q is unstable for λ < λ* and stable for λ > λ*.
 
-Adjacency interpretation:
-
-• P_λ(p,q) and P_λ(q,p) swap sign at λ*,  
-• basins exchange.
+This describes an exchange of stability.
 
 ---
 
@@ -172,7 +162,7 @@ A bifurcation may occur when:
 • Δ_struct F_λ(p) changes sign,  
 • or Δ_struct F_λ(p) becomes zero for multiple neighbours simultaneously.
 
-This is an **indicator**, not a definition.
+This is an **indicator**, not a definition of stability.
 
 ---
 
@@ -192,8 +182,6 @@ Interpretation:
 • coarse-scale dynamics ignore small structural variations,  
 • fine-scale dynamics detect them and destabilize p.
 
-This is the discrete analogue of multi-scale bifurcation.
-
 ---
 
 ## 9. Examples
@@ -204,17 +192,10 @@ Let:
 
     Φ_λ(x) = ‖x‖₂² − λ‖x‖₂.
 
-Then:
+As λ varies, the gradient field changes and the fixed-point structure may change.
+Depending on adjacency geometry, fixed points may appear, disappear, or shift.
 
-    ∇F_λ(p) = 2ψ(p) − λ u,
-
-where u is the unit vector in the direction of ψ(p).
-
-As λ increases:
-
-• the origin becomes less attractive,  
-• fixed points move outward,  
-• a saddle-node bifurcation occurs when λ reaches a threshold.
+No specific bifurcation type is asserted without proof.
 
 ---
 
@@ -224,12 +205,10 @@ Let:
 
     Φ_λ(x) = Σ w_{ij}(λ) x_{ij}²,
 
-with w_{ij}(λ) crossing zero at λ*.
+with w_{ij}(λ) varying in λ.
 
-Then:
-
-• Q_λ(p,q) changes sign at λ*,  
-• stability transitions occur when weights change sign.
+Changes in the sign pattern of w_{ij}(λ) may alter curvature indicators
+Q_λ(p,q) and lead to stability transitions.
 
 ---
 
@@ -239,10 +218,11 @@ Let:
 
     Φ_λ(x) = ⟨g_λ, x⟩.
 
-If g_λ changes direction at λ*, then:
+If the sign pattern of P_λ(p,q) changes as g_λ varies, neighbouring states may
+switch between being local minima and non-minima.
 
-• P_λ(p,q) changes sign,  
-• fixed points exchange stability (transcritical bifurcation).
+This may lead to stability exchange, but no specific bifurcation type is claimed
+without further analysis.
 
 ---
 
@@ -252,9 +232,10 @@ Lesson 0018 establishes:
 
 • parameterized structural objectives F_λ,  
 • fixed-point and stability changes under λ,  
-• discrete saddle-node, pitchfork, and transcritical bifurcations,  
+• discrete saddle-node, pitchfork, and transcritical bifurcation analogues,  
 • curvature and Laplacian indicators of bifurcation,  
 • multi-scale stability transitions under adjacency refinement.
 
-This prepares for Lesson 0019 on **structural potential landscapes and epoch transitions**.
+This prepares for Lesson 0019 on **structural potential landscapes and epoch
+transitions**.
 
