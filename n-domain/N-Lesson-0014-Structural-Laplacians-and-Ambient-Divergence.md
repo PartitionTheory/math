@@ -5,19 +5,15 @@ Ambient Second‑Order Operators and Discrete Structural Laplacians
 
 ## 1. Purpose
 
-Lessons 0011–0013 introduced:
+Lessons 0011–0013 introduced ambient gradients, Jacobians, Hessians, and
+structural finite differences for observables F = Φ ∘ ψ. Lesson 0014 extends
+this framework to:
 
-• ambient gradients ∇F(p),  
-• Jacobians JF(p),  
-• Hessians HF(p),  
-• structural finite differences ΔF(p; q),  
-• the discrete nature of ψ(P) under positional one‑hot embeddings.
+• ambient Laplacians (trace of the Hessian operator),  
+• ambient divergence of vector fields,  
+• discrete structural Laplacians defined through adjacency in P.
 
-Lesson 0014 introduces **ambient Laplacians** and **ambient divergence**, and
-then defines a **discrete structural Laplacian** compatible with the N‑Domain’s
-finite neighbourhood structure.
-
-All differentiation remains ambient in ℓ²; P itself is discrete.
+All differentiation occurs in ℓ²; P remains discrete.
 
 ---
 
@@ -25,58 +21,50 @@ All differentiation remains ambient in ℓ²; P itself is discrete.
 
 Let:
 
-    F : P → ℝ,
     F(p) = Φ(ψ(p)),
 
 with Φ : U → ℝ twice Fréchet differentiable on an open neighbourhood U ⊆ ℓ².
 
-The Hessian operator is:
+The Hessian bilinear form is:
 
-    HF(p) = D²Φ(ψ(p)) : ℓ² × ℓ² → ℝ.
+    HF(p)[u, v] = D²Φ(ψ(p))[u, v].
 
-This is a bounded bilinear form.
+By the Riesz representation theorem, there exists a unique bounded self‑adjoint
+operator T_H : ℓ² → ℓ² such that:
+
+    HF(p)[u, v] = ⟨T_H u, v⟩.
+
+This operator T_H is the ambient Hessian operator associated with F at p.
 
 ---
 
 ## 3. Ambient Laplacian
 
-In a Hilbert space, the **ambient Laplacian** of Φ at ψ(p) is defined as the
-trace of the Hessian with respect to an orthonormal basis {e_k} of ℓ²:
+If T_H is **trace‑class**, define the ambient Laplacian:
 
-    ΔF(p) := Σ_k HF(p)[e_k, e_k].
+    Δ_amb F(p) := tr(T_H)
+                = Σ_k HF(p)[e_k, e_k],
 
-This is the standard infinite‑dimensional Laplacian used in Hilbert‑space
-analysis.
+where {e_k} is any orthonormal basis of ℓ².
 
-**Dependence on extension.**  
-As with gradients and Hessians, ΔF(p) depends on the chosen extension Φ and is
-not intrinsic to P.
+Because T_H is trace‑class, the trace is finite and basis‑independent.
 
-**Basis independence.**  
-Because HF(p) is a bounded self‑adjoint operator when Φ is C², the trace is
-basis‑independent when HF(p) is trace‑class. If HF(p) is not trace‑class, ΔF(p)
-may be undefined; in such cases, only directional second‑order derivatives are
-used.
+If T_H is not trace‑class, Δ_amb F(p) is undefined; only directional second‑order
+derivatives HF(p)[v, v] are used.
 
 ---
 
 ## 4. Ambient Divergence of Vector Fields
 
-Let G : U → ℓ² be an ambient vector field.  
-Define the structural vector field:
+Let G : U → ℓ² be an ambient vector field and define:
 
     V(p) = G(ψ(p)).
 
-If G is Fréchet differentiable at ψ(p), its derivative
+If G is Fréchet differentiable at ψ(p), then DG(ψ(p)) : ℓ² → ℓ² is a bounded
+linear operator. If DG(ψ(p)) is trace‑class, define:
 
-    DG(ψ(p)) : ℓ² → ℓ²
-
-is a bounded linear operator.  
-The **ambient divergence** of V at p is:
-
-    div V(p) := Σ_k ⟨DG(ψ(p))[e_k], e_k⟩,
-
-whenever the series converges (e.g., DG(ψ(p)) trace‑class).
+    div_amb V(p) := tr(DG(ψ(p)))
+                  = Σ_k ⟨DG(ψ(p))[e_k], e_k⟩.
 
 This is the standard Hilbert‑space divergence.
 
@@ -84,45 +72,36 @@ This is the standard Hilbert‑space divergence.
 
 ## 5. Discrete Structural Laplacian
 
-Because P is discrete, an intrinsic Laplacian must be defined through finite
-neighbourhoods rather than limits.
+Let 𝒩(p) ⊆ P be a **nonempty finite set of partitions adjacent to p** under the
+unit‑step adjacency relation defined in Lesson 0001.
 
-Let 𝒩(p) be a non‑empty finite neighbourhood of admissible structural moves
-(q ∈ A(p)).  
-Define the **discrete structural Laplacian**:
+Define the discrete structural Laplacian:
 
     Δ_struct F(p)
       := Σ_{q ∈ 𝒩(p)} (F(q) − F(p)).
 
-This operator measures how F changes under all local admissible moves.
+This operator measures local structural variation around p.
 
-**Normalisation.**  
-Optionally define the normalised Laplacian:
+**Normalisation.**
 
     Δ_struct^norm F(p)
       := (1 / |𝒩(p)|) Σ_{q ∈ 𝒩(p)} (F(q) − F(p)).
 
-This parallels graph‑Laplacian constructions from Lesson 0007.
+This parallels the graph Laplacian of Lesson 0007.
 
 ---
 
-## 6. Relationship Between Ambient and Structural Laplacians
+## 6. Ambient vs Structural Laplacians
 
-For q ∈ 𝒩(p), let δ = ψ(q) − ψ(p).  
-The ambient second‑order expansion gives:
+The ambient Laplacian Δ_amb F(p) and the discrete Laplacian Δ_struct F(p) are
+**different operators**:
 
-    F(q) − F(p)
-      = ⟨∇F(p), δ⟩
-        + ½ HF(p)[δ, δ]
-        + r(δ),
+• Δ_amb F(p) is the trace of the ambient Hessian operator T_H (when trace‑class).  
+• Δ_struct F(p) is a finite sum over adjacency neighbours in P.
 
-with r(δ)/‖δ‖₂² → 0 as ‖δ‖₂ → 0.
-
-Under positional one‑hot embeddings, δ typically satisfies ‖δ‖₂ = √2 or another
-fixed value, so δ does not approach 0.  
-Thus Δ_struct F(p) is a **discrete operator**, while ΔF(p) is an **ambient
-operator**. They coincide only when ψ(P) admits arbitrarily small displacements,
-which is not the case here.
+No equality between them is asserted.  
+Relating them would require additional approximation theorems involving
+neighbourhood geometry, weights, and scaling.
 
 ---
 
@@ -135,22 +114,15 @@ Let:
     Φ(x) = ‖x‖₂²,
     F(p) = ‖ψ(p)‖₂².
 
-Then:
+Then T_H = 2I, which is not trace‑class on ℓ².  
+Thus:
 
-    ∇F(p) = 2ψ(p),
-    HF(p)[u, v] = 2⟨u, v⟩.
+    Δ_amb F(p) = ∞ (undefined).
 
-The ambient Laplacian is:
-
-    ΔF(p) = Σ_k 2‖e_k‖₂² = ∞,
-
-so ΔF(p) is not defined (HF(p) is not trace‑class).  
-However, the discrete Laplacian is perfectly well‑defined:
+But the discrete Laplacian is well‑defined:
 
     Δ_struct F(p)
       = Σ_{q ∈ 𝒩(p)} (‖ψ(q)‖₂² − ‖ψ(p)‖₂²).
-
-This is finite because 𝒩(p) is finite.
 
 ---
 
@@ -163,13 +135,11 @@ Let:
 with w ∈ ℓ∞.  
 Then:
 
-    HF(p)[u, v] = Σ_{i,j} 2 w_{ij} u_{ij} v_{ij}.
+    T_H u = (2 w_{ij} u_{ij})_{i,j}.
 
-If w ∈ ℓ¹, then HF(p) is trace‑class and:
+If w ∈ ℓ¹, then T_H is trace‑class and:
 
-    ΔF(p) = Σ_{i,j} 2 w_{ij}.
-
-This is a valid ambient Laplacian.
+    Δ_amb F(p) = 2 Σ_{i,j} w_{ij}.
 
 The discrete Laplacian remains:
 
@@ -178,35 +148,36 @@ The discrete Laplacian remains:
 
 ---
 
-### Example 3 — Linear Functional
+### Example 3 — Bounded Linear Functional
 
-If Φ is linear, then:
+Let Φ : ℓ² → ℝ be a **bounded linear functional**.  
+Then:
 
+    DΦ(x) = Φ,
+    D²Φ(x) = 0,
     HF(p) = 0,
-    ΔF(p) = 0.
+    Δ_amb F(p) = 0.
 
-The discrete Laplacian reduces to:
+The discrete Laplacian is:
 
     Δ_struct F(p)
-      = Σ_{q ∈ 𝒩(p)} (F(q) − F(p)),
-
-which measures local structural variation.
+      = Σ_{q ∈ 𝒩(p)} (F(q) − F(p)).
 
 ---
 
-## 8. Ambient vs Structural Interpretation
+## 8. Interpretation
 
-The ambient Laplacian ΔF(p):
+Δ_amb F(p):
 
-• is defined only when HF(p) is trace‑class,  
+• is ambient,  
 • depends on the chosen extension Φ,  
-• is not intrinsic to P,  
-• measures second‑order ambient curvature of Φ.
+• requires T_H trace‑class,  
+• measures second‑order ambient curvature.
 
-The discrete Laplacian Δ_struct F(p):
+Δ_struct F(p):
 
-• is always defined (finite neighbourhood),  
-• is intrinsic to the structural adjacency of P,  
+• is intrinsic to the adjacency structure of P,  
+• always defined for finite 𝒩(p),  
 • measures local structural variation,  
 • is the correct operator for discrete optimisation and dynamics.
 
@@ -216,13 +187,12 @@ The discrete Laplacian Δ_struct F(p):
 
 Lesson 0014 establishes:
 
-• ambient Laplacian ΔF(p) = tr(HF(p)),  
+• ambient Laplacian Δ_amb F(p) = tr(T_H),  
 • ambient divergence of vector fields,  
 • discrete structural Laplacian Δ_struct F(p),  
 • rigorous separation of ambient and structural operators,  
-• examples for quadratic, weighted quadratic, and linear functionals.
+• examples for quadratic, weighted quadratic, and bounded linear functionals.
 
 This completes the second‑order ambient calculus arc and prepares for Lesson
-0015 on **structural optimisation and discrete gradient‑descent dynamics**.
-
+0015 on structural optimisation and discrete gradient‑descent dynamics.
 
