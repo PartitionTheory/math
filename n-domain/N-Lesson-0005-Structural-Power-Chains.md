@@ -1,62 +1,66 @@
 # N‑Lesson‑0005 — Structural Power Chains
-Iterated Structural Multiplication in N
+Iterated Concatenation and Collapse Scaling
 
 ---
 
 ## 1. Purpose
 
-Structural power chains describe repeated application of structural
-multiplication. They form the basis for growth processes, operator iteration,
-and later geometric constructions.
+Structural power chains describe repeated concatenation of a structured
+partition. They model growth, repetition, and expansion of block sequences.
 
 ---
 
-## 2. Definition of Structural Power Chain
+## 2. Recursive Definition
 
-Given a partition p ∈ N, define its structural powers:
+Let p ∈ N⁺ be a nonempty structured partition.
 
-    p¹ = p
-    p² = p ⊗ p
-    p³ = p ⊗ p ⊗ p
-    …
-    pⁿ = p ⊗ p ⊗ … ⊗ p   (n times)
+Define:
 
-Structural multiplication ⊗ is concatenation (Lesson 0004).
+    p^(⊗1) = p
 
-Thus pⁿ is the concatenation of n copies of p.
+and for n ≥ 1:
+
+    p^(⊗(n+1)) = p^(⊗n) ⊗ p
+
+Thus p^(⊗n) is the concatenation of n copies of p.
+
+Examples:
+
+    p^(⊗2) = p ⊗ p
+    p^(⊗3) = p ⊗ p ⊗ p
 
 ---
 
 ## 3. Collapse Behavior
 
-Collapse distributes linearly over structural powers:
+Collapse scales linearly with n:
 
-    π(pⁿ) = n · π(p)
+    π(p^(⊗n)) = n · π(p)
 
 Proof:
 
-    π(pⁿ)
+    π(p^(⊗n))
       = π(p ⊗ p ⊗ … ⊗ p)
       = π(p) + π(p) + … + π(p)
       = n · π(p)
 
-Thus structural power chains correspond to repeated degree addition in N−1.
+Thus structural powers correspond to repeated degree addition in N−1.
 
 ---
 
-## 4. Reversibility Considerations
+## 4. Correct Recovery Statement (Word-Root Problem)
 
-Structural power chains are:
+Earlier versions incorrectly claimed reversibility.
 
-• reversible when n = 1  
-• partially reversible when n > 1 and all factors are known  
-• irreversible when factors are unknown
+Correct statement:
 
-Example:
+If n is known, recovering p from p^(⊗n) is a **word-root problem**.
 
-If p³ is known but p is not, p cannot be recovered.
+A base p exists exactly when the full block sequence of p^(⊗n) consists of n
+repetitions of one subword. In that case, the base is unique for the specified n.
 
-This aligns with operator theory from Lesson 0003.
+If the block sequence does not decompose into n identical segments, no such p
+exists.
 
 ---
 
@@ -64,12 +68,12 @@ This aligns with operator theory from Lesson 0003.
 
 Structural power chains model:
 
-• growth of block sequences  
 • repeated structural operations  
 • expansion of adjacency neighborhoods  
-• accumulation of degree under collapse
+• growth of block sequences  
+• accumulation of degree under collapse  
 
-They provide the foundation for adjacency graph closure (Lesson 0006).
+They provide the foundation for the power-chain graph in Lesson 0006.
 
 ---
 
@@ -77,11 +81,10 @@ They provide the foundation for adjacency graph closure (Lesson 0006).
 
 This lesson establishes:
 
-• structural power chains as iterated concatenation  
+• recursive definition of structural powers  
 • linear collapse behavior  
-• reversibility conditions  
-• structural interpretation of repeated multiplication
+• correct word-root recovery conditions  
+• structural interpretation of repeated concatenation  
 
-These concepts are required for adjacency graph closure (Lesson 0006) and
-for structural distance (Lesson 0007).
+These concepts prepare the foundation for the adjacency graph (Lesson 0006).
 
