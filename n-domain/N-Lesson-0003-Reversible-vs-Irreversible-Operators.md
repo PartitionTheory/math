@@ -1,90 +1,121 @@
 # N‑Lesson‑0003 — Reversible vs Irreversible Operators
-Formal Operator Theory on Structured Partitions
+Injectivity, Surjectivity, and Structural Information Loss
 
 ---
 
-## 1. Operators on N
+## 1. Operators on Structured Partitions
 
 An operator A acts on structured partitions:
 
     A : N → N
 
-Operators may modify:
+Operators may change:
 
 • block degrees  
 • block count  
-• block ordering  
+• block order  
 • structural relationships  
 
 ---
 
-## 2. Reversible Operators
+## 2. Left-Reversibility
 
-An operator A is reversible when there exists an operator B such that:
+An operator A is left-reversible when there exists B such that:
 
-    B(A(p)) = p
+    B ∘ A = id
 
-for every partition p ∈ N.
+Left-reversibility means every output of A has a unique preimage under B.
 
-This is **left-invertibility**.
+Examples:
 
-Reversible operators preserve enough structure that the original partition
-can be recovered exactly.
+• block permutations (bijective)  
+• degree increment on ℕ⁺ (injective but not surjective)  
 
-Examples of reversible transformations:
+Degree increment:
 
-• degree increment  
-• degree decrement (when invertible)  
-• block permutation  
-• structural reordering  
+    A(d) = d + 1
+
+is injective, so a left inverse exists on its image:
+
+    B(d) = d − 1
+
+but A is not surjective, so B ∘ A = id holds, while A ∘ B ≠ id.
 
 ---
 
-## 3. Irreversible Operators
+## 3. Full Reversibility
 
-An operator A is irreversible when **no** operator B satisfies:
+An operator A is fully reversible when:
 
-    B(A(p)) = p
+    B ∘ A = id   and   A ∘ B = id
 
-Irreversibility arises when information is lost.
+Equivalently, A is bijective and B = A⁻¹.
+
+Examples:
+
+• block permutations  
+• reordering operators  
+
+Full reversibility allows negative iterates and reversible dynamics.
+
+---
+
+## 4. Irreversible Operators
+
+An operator A is irreversible when no operator B satisfies:
+
+    B ∘ A = id
+
+Irreversibility arises from information loss.
 
 Examples:
 
 • merging blocks  
 • deleting blocks  
-• collapsing structure  
-• the collapse map π itself
-
-Irreversible operators destroy structural detail that cannot be reconstructed.
-
----
-
-## 4. Relationship to Collapse
+• collapse map π  
 
 Collapse:
 
-    π(p) = deg(b₁) + deg(b₂) + … + deg(bₖ)
+    π(d₁,…,dₖ) = Σᵢ dᵢ
 
-is **irreversible** because:
+is not injective, so π has no global left inverse.
 
-• block count is lost  
-• block degrees individually are lost  
-• ordering is lost  
-
-Thus no operator B can recover p from π(p).
+Distinct structured partitions can collapse to the same degree.
 
 ---
 
-## 5. Summary
+## 5. Injectivity vs Surjectivity
+
+Injective operators preserve enough structure for left-recovery.
+
+Surjective operators ensure full coverage of the codomain.
+
+Bijective operators provide full reversibility.
+
+Collapse is:
+
+• surjective onto ℕ⁺  
+• not injective  
+• irreversible  
+
+Degree increment is:
+
+• injective  
+• not surjective  
+• left-reversible but not fully reversible  
+
+---
+
+## 6. Summary
 
 This lesson establishes:
 
-• the formal definition of operators on N  
-• reversible operators via left-inverses  
-• irreversible operators via structural information loss  
-• collapse as a canonical irreversible operator
+• left-reversibility (B ∘ A = id)  
+• full reversibility (A bijective)  
+• irreversibility via non-injectivity  
+• collapse π as a canonical irreversible operator  
+• correct behavior of degree increment and permutations  
 
-These concepts are required for structural multiplication (Lesson 0004),
-power chains (Lesson 0005), and the geometric operators defined in
-Lessons 0008–0010.
+These concepts prepare the foundation for concatenation (Lesson 0004),
+structural powers (Lesson 0005), and geometric operators (Lessons 0008–0010).
 
