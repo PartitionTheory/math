@@ -3,13 +3,13 @@ Associativity, Semigroup Structure, and Collapse Compatibility
 
 ---
 
-## 1. Domain Choice
+## 1. Domain
 
 Let N⁺ be the set of all nonempty structured partitions:
 
     p = (d₁, d₂, …, dₖ)
 
-Each dᵢ ∈ ℕ⁺.
+Each dᵢ is a positive integer.
 
 N⁺ excludes the empty partition.
 
@@ -19,25 +19,21 @@ N⁺ excludes the empty partition.
 
 For p = (b₁,…,bₖ) and q = (c₁,…,cₗ), define:
 
-    p ⊗ q = (b₁,…,bₖ,c₁,…,cₗ)
-
-This operation preserves block order and joins the two sequences.
+    p ⊗ q = (b₁, …, bₖ, c₁, …, cₗ)
 
 Type signature:
 
     ⊗ : N⁺ × N⁺ → N⁺
 
+Concatenation preserves block order and joins the two sequences.
+
 ---
 
-## 3. Algebraic Structure
-
-### Associativity
+## 3. Associativity
 
 For all p, q, r ∈ N⁺:
 
     (p ⊗ q) ⊗ r = p ⊗ (q ⊗ r)
-
-### Semigroup
 
 Thus:
 
@@ -45,60 +41,67 @@ Thus:
 
 is an associative semigroup.
 
-### Optional Monoid Extension
+---
 
-If the empty partition ε is added, define:
+## 4. Optional Monoid Extension
+
+Introduce the empty partition ε.
+
+Define:
 
     N₀ = {ε} ∪ N⁺
 
 Then:
 
+    ε ⊗ p = p
+    p ⊗ ε = p
+
+Thus:
+
     (N₀, ⊗, ε)
 
-is a monoid with identity ε.
+is a monoid.
 
 ---
 
-## 4. Cancellation (Corrected)
+## 5. Cancellation
 
-Earlier versions incorrectly used “reversibility.”
+If p ⊗ q and p are known, then q is recoverable by removing the prefix p.
 
-Correct statement:
+If p ⊗ q and q are known, then p is recoverable by removing the suffix q.
 
-If p ⊗ q and p are known, then q is recoverable by cancellation of the prefix p.
-
-If p ⊗ q and q are known, then p is recoverable by cancellation of the suffix q.
-
-Unconstrained factorisation need not be unique.
+Factorisation need not be unique in general, but prefix and suffix cancellation
+are valid.
 
 ---
 
-## 5. Collapse Compatibility
+## 6. Collapse Compatibility
 
-Collapse distributes over concatenation:
+Collapse distributes over concatenation.
+
+For structured partitions p and q:
+
+    π(p) = Σᵢ deg(bᵢ)
+    π(q) = Σⱼ deg(cⱼ)
+
+Then:
 
     π(p ⊗ q) = π(p) + π(q)
-
-Proof:
-
-    π(b₁,…,bₖ,c₁,…,cₗ)
-      = Σᵢ deg(bᵢ) + Σⱼ deg(cⱼ)
-      = π(p) + π(q)
 
 Thus concatenation corresponds to degree addition in N−1.
 
 ---
 
-## 6. Summary
+## 7. Summary
 
 This lesson establishes:
 
-• explicit domain N⁺ of nonempty partitions  
-• concatenation p ⊗ q as ordered joining  
-• semigroup structure (N⁺, ⊗)  
-• optional monoid (N₀, ⊗, ε)  
-• cancellation instead of reversibility  
-• collapse compatibility π(p ⊗ q) = π(p) + π(q)
+• domain N⁺ of nonempty structured partitions  
+• concatenation p ⊗ q  
+• semigroup structure  
+• optional monoid extension  
+• cancellation properties  
+• collapse identity π(p ⊗ q) = π(p) + π(q)
 
 This prepares the foundation for structural power chains (Lesson 0005).
 
