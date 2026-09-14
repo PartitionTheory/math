@@ -1,47 +1,68 @@
 # N‑Lesson‑0002 — Boundary Structure of N−1
-Collapse Map and the Structured–Collapsed Boundary
+Collapse Map, Total Degree, and the Structured–Collapsed Boundary
 
 ---
 
-## 1. Collapse Map Definition
+## 1. Collapse Map
 
-The collapse map π sends a structured partition to its total degree:
+For a structured partition p = (d₁, d₂, …, dₖ), define:
 
-    π(p) = deg(b₁) + deg(b₂) + … + deg(bₖ)
+    π(p) = d₁ + d₂ + … + dₖ
 
-Collapse removes all internal structure while preserving total degree.
+The collapse map π forgets block order and individual degrees, preserving only
+the total degree.
 
 ---
 
 ## 2. Definition of N−1
 
-N−1 is the boundary domain consisting of collapsed objects:
+The boundary domain N−1 is the image of N under collapse:
 
-    N−1 = { d ∈ ℕ : d = π(p) for some p ∈ N }
+    N−1 = π(N) = ℕ⁺
 
 Thus:
 
 • N contains structured partitions  
-• N−1 contains collapsed degree values  
+• N−1 contains positive integers  
 • π : N → N−1 is surjective
 
 ---
 
-## 3. Structured vs Collapsed Objects
+## 3. Irreversibility of Collapse
+
+Irreversibility belongs to the map π, not to the codomain N−1.
+
+Reason:
+
+    π is not injective.
+
+Distinct structured partitions can share the same total degree.
+
+For each n ∈ ℕ⁺, the fibre π⁻¹({n}) contains:
+
+    2^(n−1)
+
+ordered unary partitions.
+
+Thus π has no left inverse on all of N.
+
+---
+
+## 4. Structured vs Collapsed Objects
 
 Structured object:
 
-    p = (b₁, b₂, …, bₖ)
+    p = (d₁, d₂, …, dₖ)
 
 Collapsed object:
 
-    π(p) = d
+    π(p) = n
 
-The collapse map forgets:
+Collapse removes:
 
 • block count  
-• block ordering  
-• block degrees individually  
+• block order  
+• individual degrees  
 
 but preserves:
 
@@ -49,25 +70,28 @@ but preserves:
 
 ---
 
-## 4. Boundary Interpretation
+## 5. Numeric Adjacency Clarification
 
-N−1 is the “shadow” or “boundary” of N:
+Numeric adjacency:
 
-• every structured object has a collapsed counterpart  
-• collapse is irreversible  
-• collapse defines the simplest invariant of a partition
+    n ∼ n+1
+
+is symmetric when treated as an undirected edge.
+
+Irreversibility does not arise from adjacency on ℕ⁺, but from the non-injective
+nature of π.
 
 ---
 
-## 5. Summary
+## 6. Summary
 
 This lesson establishes:
 
-• the collapse map π  
-• the definition of N−1  
-• the structured–collapsed boundary  
-• the preservation of total degree
+• N−1 = π(N) = ℕ⁺  
+• collapse map π as a many-to-one map  
+• irreversibility due to non-injectivity  
+• correct preimage count 2^(n−1)  
+• distinction between structured and collapsed objects  
 
-These concepts are required for reversibility (Lesson 0003) and for the
-feature‑space geometry introduced in Lessons 0008–0010.
+This prepares the foundation for operator theory in Lesson 0003.
 
