@@ -54,7 +54,7 @@ This formula is valid **only** on the pure power path.
 
 ---
 
-## 5. Collapse Relationship (Corrected)
+## 5. Collapse Relationship
 
 Collapse of a vertex:
 
