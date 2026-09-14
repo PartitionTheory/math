@@ -7,7 +7,7 @@ Injectivity, Surjectivity, and Structural Information Loss
 
 An operator acts on structured partitions:
 
-    A : N → N
+    A : 𝒫 → 𝒫
 
 Operators may change:
 
@@ -29,7 +29,8 @@ Consequently:
     A is injective
 
 Left-invertibility guarantees recoverability of inputs but does not guarantee
-surjectivity.
+surjectivity. A left-invertible operator may fail to be globally reversible
+while still being reversible on its image.
 
 Example: degree increment
 
@@ -62,7 +63,7 @@ Examples:
 • block permutations  
 • fixed reordering operators  
 
-Full reversibility allows negative iterates and reversible dynamics.
+Full reversibility requires bijectivity.
 
 ---
 
@@ -88,7 +89,7 @@ Distinct structured partitions can collapse to the same total degree.
 
 Thus:
 
-    π has no left inverse on all of N.
+    π has no left inverse on all of 𝒫.
 
 ---
 
@@ -100,15 +101,18 @@ Injective:
 
 Surjective:
 
-    For every y in N, there exists x with A(x) = y
+    For every y in 𝒫, there exists x with A(x) = y
 
 Bijective:
 
     A is both injective and surjective
 
-Reversibility requires bijectivity.
+Full reversibility requires bijectivity.
 
-Irreversibility occurs when A is not bijective.
+Failure of injectivity causes genuine information loss.
+
+Non-surjectivity prevents a global inverse but does not necessarily destroy
+recoverability on the image.
 
 ---
 
