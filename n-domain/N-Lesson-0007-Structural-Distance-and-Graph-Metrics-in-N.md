@@ -25,14 +25,7 @@ From Lesson 0006:
   $$V(p) = \{\, p^{\otimes n} \mid n \in \mathbb{N}^{+} \,\}.$$
 
 - Edges:  
-$$
-E(p) =
-\{
-  (p^{\otimes n}, p^{\otimes (n+1)}),
-  (p^{\otimes n}, A(p^{\otimes n}))
-  \mid n \in \mathbb{N}^{+}
-\}.
-$$
+  $E(p) = \{ (p^{\otimes n}, p^{\otimes (n+1)}), (p^{\otimes n}, A(p^{\otimes n})) \mid n \in \mathbb{N}^{+} \}.$
 
 Graph:
 
