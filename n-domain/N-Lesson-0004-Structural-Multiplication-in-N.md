@@ -1,214 +1,89 @@
 # N‑Lesson‑0004 — Structural Multiplication in N
-### Operator-Based Composition on Partitions
+Concatenation as the Multiplicative Structure of Partitions
 
 ---
 
-## 0. Purpose
+## 1. Definition of Structural Multiplication
 
-This lesson defines **structural multiplication** in N as an operator on
-partitions:
+Given two structured partitions:
 
-- a binary operation on $\mathcal{P}$  
-- closure and type signatures  
-- behavior of degree under multiplication  
-- distinction from numeric multiplication in $N^{-1}$  
+    p = (b₁, b₂, …, bₖ)
+    q = (c₁, c₂, …, cₘ)
 
----
+their structural multiplication is concatenation:
 
-## 1. Preliminaries
+    p ⊗ q = (b₁, b₂, …, bₖ, c₁, c₂, …, cₘ)
 
-Recall:
-
-- Unary alphabet: $\Sigma = \{\square\}$  
-- Blocks: $b \in \Sigma^{+}$  
-- Partitions: $p = (b_1, \dots, b_k)$  
-- Degree: $\deg(p) = \sum_{i=1}^k \deg(b_i)$  
-
-The domain:
-
-$$N = (\mathcal{P}, \preceq, A, C).$$
+This operation preserves block order and combines the structures directly.
 
 ---
 
-## 2. Structural Multiplication on Blocks
+## 2. Algebraic Properties
 
-### 2.1 Definition on Blocks
+### Associativity
 
-For blocks $b, c \in \Sigma^{+}$ define:
+For all p, q, r ∈ N:
 
-$$b \otimes c = \text{concatenation of } b \text{ and } c.$$
+    (p ⊗ q) ⊗ r = p ⊗ (q ⊗ r)
 
-Since both are unary strings:
+### Identity Element
 
-- If $b = \square^{m}$ and $c = \square^{n}$, then  
-  $$b \otimes c = \square^{m+n}.$$
+The empty partition ∅ acts as the identity:
 
-### 2.2 Degree Behavior
+    p ⊗ ∅ = p
+    ∅ ⊗ p = p
 
-For blocks:
-
-$$\deg(b \otimes c) = \deg(b) + \deg(c).$$
-
----
-
-## 3. Structural Multiplication on Partitions
-
-### 3.1 Definition
-
-Let:
-
-$$p = (b_1, \dots, b_k), \qquad q = (c_1, \dots, c_\ell).$$
-
-Define structural multiplication:
-
-$$p \otimes q = (b_1, \dots, b_k, c_1, \dots, c_\ell).$$
-
-That is, **concatenation of partition sequences**.
-
-### 3.2 Type Signature
-
-$$\otimes : \mathcal{P} \times \mathcal{P} \to \mathcal{P}.$$
-
-### 3.3 Closure
-
-For any $p, q \in \mathcal{P}$, $p \otimes q$ is again a finite ordered
-tuple of blocks, hence $p \otimes q \in \mathcal{P}$.
-
----
-
-## 4. Degree Under Structural Multiplication
-
-### 4.1 Additivity
-
-For partitions:
-
-$$\deg(p \otimes q) = \deg(p) + \deg(q).$$
-
-**Proof.**
-
-Write:
-
-- $p = (b_1, \dots, b_k)$  
-- $q = (c_1, \dots, c_\ell)$  
-
-Then:
-
-$$
-\deg(p \otimes q)
-= \sum_{i=1}^k \deg(b_i) + \sum_{j=1}^\ell \deg(c_j)
-= \deg(p) + \deg(q).
-$$
-
-Thus structural multiplication in N corresponds to **degree addition** in
-$N^{-1}$.
-
----
-
-## 5. Algebraic Properties
-
-### 5.1 Associativity
-
-For $p, q, r \in \mathcal{P}$:
-
-$$(p \otimes q) \otimes r = p \otimes (q \otimes r).$$
-
-Both sides equal the concatenation of all blocks of $p$, then $q$, then
-$r$.
-
-### 5.2 Non‑Commutativity
+### Non‑commutativity
 
 In general:
 
-$$p \otimes q \ne q \otimes p.$$
+    p ⊗ q ≠ q ⊗ p
 
-The order of blocks is different, so structural multiplication is
-**non‑commutative**, even though degree addition is commutative.
-
-### 5.3 Identity Element
-
-Define the **empty partition**:
-
-$$e = ()$$
-
-(not used in the original conceptual series, but useful algebraically).
-
-Then:
-
-$$e \otimes p = p, \qquad p \otimes e = p.$$
-
-If we restrict to nonempty partitions only, there is **no identity
-element** in $\mathcal{P}$.
+because block order is preserved.
 
 ---
 
-## 6. Relation to $N^{-1}$
+## 3. Collapse Behavior
 
-Under the collapse map:
+Collapse distributes over multiplication:
 
-$$\pi(p) = \deg(p), \qquad \pi(q) = \deg(q).$$
+    π(p ⊗ q) = π(p) + π(q)
 
-We have:
+Proof:
 
-$$\pi(p \otimes q) = \deg(p \otimes q) = \deg(p) + \deg(q).$$
+    π(p ⊗ q)
+      = deg(b₁) + … + deg(bₖ) + deg(c₁) + … + deg(cₘ)
+      = π(p) + π(q)
 
-Thus:
-
-- structural multiplication in N  
-- corresponds to **numeric addition** in $N^{-1}$  
-
-but preserves full structure in N while collapsing to pure degree in
-$N^{-1}$.
+Thus structural multiplication corresponds to degree addition in N−1.
 
 ---
 
-## 7. Examples
+## 4. Reversibility Considerations
 
-### Example 1: Simple Multiplication
+Structural multiplication is:
 
-Let:
+• reversible when both operands are known  
+• irreversible when one operand is unknown  
 
-$$p = (\square^2), \qquad q = (\square^3).$$
+Example:
 
-Then:
+If p ⊗ q is known but q is not, p cannot be recovered.
 
-$$p \otimes q = (\square^2, \square^3).$$
-
-and:
-
-$$\deg(p \otimes q) = 2 + 3 = 5.$$
-
-### Example 2: Multi‑Block Partitions
-
-Let:
-
-$$p = (\square^1, \square^2), \qquad q = (\square^3).$$
-
-Then:
-
-$$p \otimes q = (\square^1, \square^2, \square^3).$$
-
-and:
-
-$$\deg(p \otimes q) = 1 + 2 + 3 = 6.$$
+This aligns with the operator theory of Lesson 0003.
 
 ---
 
-## 8. Summary
+## 5. Summary
 
-Structural multiplication:
+This lesson establishes:
 
-- is defined as partition concatenation  
-- is closed on $\mathcal{P}$  
-- is associative and non‑commutative  
-- corresponds to degree addition in $N^{-1}$  
+• structural multiplication as concatenation  
+• associativity  
+• identity element  
+• collapse compatibility  
+• reversibility conditions  
 
-This provides the first rigorous multiplication operation in N.
-
----
-
-## 9. Next Lesson
-
-**N‑Lesson‑0005 — Factorial Chains and Iterated Structural Multiplication**  
-Formalizing $p^{\otimes n}$, factorial‑like constructions, and their
-behavior under collapse to $N^{-1}$.
+These concepts are required for structural power chains (Lesson 0005) and
+for geometric operators in Lessons 0008–0010.
 
