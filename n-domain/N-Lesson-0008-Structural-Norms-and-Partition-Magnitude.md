@@ -137,7 +137,7 @@ Let $\alpha, \beta, \gamma \ge 0$.
 
 Define:
 
-$\|p\|_{\text{mix}} = \alpha\,\|p\|_{\deg} + \beta\,\|p\|_{\Delta} + \gamma\,\|p\|_{\text{adj}}.$
+Define: $\|p\|_{\text{mix}} = \alpha$ $\|p\|_{\deg} + \beta$ $\|p\|_{\Delta} + \gamma$ $\|p\|_{\text{adj}}$.
 
 ### 5.2 Interpretation
 
