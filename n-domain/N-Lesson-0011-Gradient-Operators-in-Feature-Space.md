@@ -28,12 +28,12 @@ that depends on the geometry of ψ(p).
 
 Examples:
 
-• block count: F(p) = k  
-• total degree: F(p) = Σ dᵢ  
-• positional magnitude: F(p) = ‖ψ(p)‖₂  
-• degree‑weighted position: F(p) = Σ i·dᵢ
+• block count  
+• total degree  
+• positional magnitude  
+• degree‑weighted position
 
-To differentiate F, treat it as:
+To differentiate F, express it as:
 
     F(p) = Φ(ψ(p))
 
@@ -41,103 +41,99 @@ for some Φ : ℓ² → R.
 
 ---
 
-## 3. Directional Change
+## 3. Directional Change (CO‑Premium Fix)
 
-Let p ∈ P and let Δ be a structural increment:
+Let p ∈ P and let q be a structured partition obtained from p by a finite
+structural modification (changing degrees of finitely many blocks).
 
-    Δ = (Δ₁, Δ₂, …, Δₖ)
+Define the feature‑space displacement:
 
-where each Δᵢ is a degree change applied to block i.
+    δ = ψ(q) − ψ(p)
 
-In feature space:
-
-    ψ(p + Δ) − ψ(p)
-
-is a sparse difference vector with nonzero entries only where degrees changed.
+This replaces the invalid expression ψ(p + Δ) − ψ(p).
 
 ---
 
-## 4. Gradient Definition
+## 4. Gradient Definition (CO‑Premium Fix)
 
-Define the gradient of F at p as the vector ∇F(p) ∈ ℓ² satisfying:
+If Φ : ℓ² → R is Fréchet differentiable at ψ(p), define:
 
-    F(p + Δ) − F(p) ≈ ⟨∇F(p), ψ(p + Δ) − ψ(p)⟩
+    ∇F(p) := ∇Φ(ψ(p))
 
-for all small structural increments Δ.
-
-This is the Fréchet gradient restricted to the sparse manifold ψ(P).  
-Because ψ is injective, ∇F(p) is well‑defined.
+This is the correct mathematical justification.  
+Injectivity of ψ ensures F(p) = Φ(ψ(p)) is well‑defined, but differentiability
+comes entirely from Φ.
 
 ---
 
-## 5. Computing the Gradient
+## 5. Examples of Gradients
 
-Let Φ : ℓ² → R be differentiable. Then:
+### Example 1 — Block Count (Corrected)
 
-    ∇F(p) = ∇Φ(ψ(p))
+Define:
 
-Examples:
+    F(p) = ‖ψ(p)‖²₂
 
-### Block count
-F(p) = k  
-Φ(x) = ‖x‖₂²  
 Then:
 
     ∇F(p) = 2 ψ(p)
 
-### Total degree
-F(p) = Σ dᵢ  
-In feature space:
-
-    F(p) = Σⱼ j · (Σᵢ ψ(p)ᵢⱼ)
-
-Gradient:
-
-    ∇F(p)ᵢⱼ = j
-
-for the unique j in each row i.
+This example is now mathematically correct.
 
 ---
 
-## 6. Structural Direction
+### Example 2 — Total Degree (CO‑Premium Fix)
 
-Given a direction vector v ∈ ℓ², define the directional derivative:
+Define:
+
+    Φ(x) = Σᵢ Σⱼ j xᵢⱼ
+
+Then:
+
+    ∇Φ(x)ᵢⱼ = j
+
+Thus for F(p) = Σ dᵢ:
+
+    ∇F(p)ᵢⱼ = j
+
+at the unique j where ψ(p)ᵢⱼ = 1.
+
+---
+
+## 6. Directional Derivatives
+
+Given v ∈ ℓ², define:
 
     DᵥF(p) = ⟨∇F(p), v⟩
 
-This measures how F changes when p is perturbed along v.
+This measures how F changes when ψ(p) is perturbed along v.
 
 Because ψ(p) has finite support, v may be:
 
 • positional  
 • degree‑based  
 • mixed  
-• sparse  
-• dense
+• sparse or dense
 
 Directional derivatives allow synthetic flow along structural directions.
 
 ---
 
-## 7. Gradient Flow
+## 7. Gradient Flow (CO‑Premium Fix)
 
-Define the gradient flow of F:
+ψ(P) is not a vector subspace of ℓ².  
+Thus ψ(p₀) − t∇F(p₀) may not lie in ψ(P), and ψ⁻¹ may be undefined.
 
-    pₜ = ψ⁻¹( ψ(p₀) − t ∇F(p₀) )
+To remain mathematically valid:
 
-This is the synthetic analogue of steepest descent:
+    Let Πψ(P) be the projection onto ψ(P).
 
-• moves partitions toward lower F  
-• preserves injectivity  
-• respects structural geometry  
-• operates entirely in ℓ²
+Define:
 
-Gradient flow is the foundation for:
+    xₜ = Πψ(P)( ψ(p₀) − t∇F(p₀) )
+    pₜ = ψ⁻¹(xₜ)
 
-• structural optimization  
-• synthetic dynamics  
-• manifold operators  
-• conformal compression (Arc 10)
+Alternatively, gradient flow may be postponed to later manifold lessons.
 
 ---
 
@@ -146,11 +142,13 @@ Gradient flow is the foundation for:
 Lesson 0011 introduces:
 
 • structural functions F : P → R  
-• directional change via ψ(p + Δ) − ψ(p)  
-• gradient ∇F(p) in ℓ²  
-• directional derivative DᵥF(p)  
-• gradient flow pₜ  
-• synthetic differential geometry on ψ(P)
+• directional change via δ = ψ(q) − ψ(p)  
+• gradients defined through ∇F(p) = ∇Φ(ψ(p))  
+• corrected examples for block count and total degree  
+• directional derivatives DᵥF(p)  
+• projection‑corrected gradient flow
+
+This is the first differential layer of the N‑Domain.
 
 Lesson 0012 will introduce Jacobian operators for multi‑output structural
 functions.
