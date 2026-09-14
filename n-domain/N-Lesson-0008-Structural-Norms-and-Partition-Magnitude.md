@@ -137,8 +137,7 @@ Let $\alpha, \beta, \gamma \ge 0$.
 
 Define:
 
-Define: $\\|p\\|_{\text{mix}} = \alpha$ $\\|p\\|_{\deg} + \beta$ $\\|p\\|_{\Delta} + \gamma$ $\\|p\\|_{\text{adj}}$.
-
+‖p‖ₘᵢₓ = α‖p‖₍dₑg₎ + β‖p‖₍Δ₎ + γ‖p‖₍adj₎.
 ### 5.2 Interpretation
 
 - $\alpha$ emphasizes size  
