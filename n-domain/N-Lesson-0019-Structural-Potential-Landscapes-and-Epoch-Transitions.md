@@ -54,16 +54,15 @@ To allow fixed points, define the **closed neighbourhood**:
 
     𝒩̄(p) := {p} ∪ 𝒩(p).
 
+Define the set-valued minimiser correspondence:
+
+    𝒯_λ(p)
+      := argmin_{q ∈ 𝒩̄(p)} V_λ(q).
+
 Define the deterministic update rule:
 
-    T_λ(p) := lexicographically selected element of
-              argmin_{q ∈ 𝒩̄(p)} V_λ(q).
-
-Alternatively, retain the set-valued correspondence:
-
-    𝒯_λ(p) := argmin_{q ∈ 𝒩̄(p)} V_λ(q)
-
-and apply tie-breaking afterwards.
+    T_λ(p)
+      := the lexicographically selected element of 𝒯_λ(p).
 
 Trajectories satisfy:
 
@@ -80,13 +79,14 @@ A state p is a **local minimum** if:
 Define the basin of a fixed point p:
 
     Basin_λ(p)
-    := { r ∈ P : ∃ N such that T_λⁿ(r)=p for all n ≥ N }.
+      := { r ∈ P :
+           ∃ N such that T_λⁿ(r)=p for every n ≥ N }.
 
 ### Basin Partitioning
 
 • Basins of distinct fixed points are disjoint.  
 • They partition P **only if** every trajectory reaches a fixed point.  
-• Otherwise, periodic cycles must also be included as attractors.
+• Otherwise, basins of all attractors—including periodic cycles—must be included.
 
 ---
 
@@ -111,7 +111,8 @@ with:
 
 ### 5.3 Communication Height
 
-    H_λ(a,b) := inf_{γ : a→b} H_λ(γ).
+    H_λ(a,b)
+      := inf_{γ : a→b} H_λ(γ).
 
 In finite graphs, the infimum is attained.
 
@@ -149,8 +150,8 @@ A **plateau complex** is a maximal connected set S ⊆ P such that:
 
 Plateau complexes contain **objective-neutral adjacency moves**.
 
-Under deterministic tie-breaking, lateral motion is not automatic; the
-set-valued correspondence 𝒯_λ contains the lateral moves.
+Under deterministic tie-breaking, lateral motion is not automatic;  
+the set-valued correspondence 𝒯_λ contains the lateral moves.
 
 ---
 
@@ -161,20 +162,20 @@ Let p be a local minimum.
 Define the **escape elevation**:
 
     E_λ(p)
-    := inf { H_λ(γ) :
-             γ is a path from p to q,
-             q ∉ Basin_λ(p) }.
+      := inf {
+          H_λ(γ) :
+          γ is a finite path from p to q,
+          q ∉ Basin_λ(p)
+         }.
 
 If Basin_λ(p)=P:
 
-    E_λ(p) = +∞,
-    B_λ(p) = +∞.
+    E_λ(p)=+∞,
+    B_λ(p)=+∞.
 
 Define the **shift-invariant barrier height**:
 
     B_λ(p) := E_λ(p) − V_λ(p).
-
-This records the elevation required to leave Basin_λ(p).
 
 ---
 
@@ -201,9 +202,9 @@ Replace undefined “topology” with:
 
 Define the **sublevel graph**:
 
-    G_λ^a := G[{ p : V_λ(p) ≤ a }].
+    G_λᵃ := G[{ p : V_λ(p) ≤ a }].
 
-Epoch transitions correspond to changes in connected components of G_λ^a.
+Epoch transitions correspond to changes in connected components of G_λᵃ.
 
 ---
 
@@ -221,42 +222,50 @@ Define:
 
 Closed neighbourhoods:
 
-    𝒩̄(A) = {A, B}
-    𝒩̄(B) = {A, B, C}
-    𝒩̄(C) = {B, C}
+    𝒩̄(A)={A,B}
+    𝒩̄(B)={A,B,C}
+    𝒩̄(C)={B,C}
 
 ### λ < 0
 
 • B is the unique strict local minimum.  
-• All trajectories reach B.  
+• All deterministic trajectories reach B.  
 • No saddle states (only one minimum).
 
 ### λ = 0
 
-• A and B form a plateau complex (V_0(A)=V_0(B)=0).  
-• Attractor depends on tie-breaking.  
-• Transition point: plateau + attractor transition.
+• A and B have equal minimum value.  
+• They form a level plateau.  
+• Deterministic attractor depends on tie-breaking.  
+• Plateau + attractor transition.
 
 ### 0 < λ < 1
 
 • A is the unique strict local minimum.  
-• All trajectories reach A.
+• All deterministic trajectories reach A.
 
 ### λ = 1
 
 • A remains a strict local minimum.  
-• C becomes a non-strict local minimum (V_1(B)=V_1(C)=1).  
-• Whether C is a fixed point depends on tie-breaking.  
-• This is a **plateau/tie transition**, not a basin split.
+• C is a non-strict local minimum (V₁(B)=V₁(C)=1).  
+• Whether C is fixed depends on tie-breaking.  
+• This is a **tie/plateau transition**, not a basin split.
 
 ### λ > 1
 
 • A and C are strict local minima.  
-• Basin decomposition splits.  
-• B is the barrier state on the unique path A ↔ B ↔ C.  
-• Transition point: basin-splitting + barrier-state transition.
+• Basin decomposition splits into basins of A and C.  
+• B is the unique barrier state on the path A ↔ B ↔ C.
 
-Thus λ = 0 and λ = 1 are **epoch transition points**.
+Replace the incorrect statement:
+
+    “For λ≥1, the basin decomposition splits.”
+
+with the correct:
+
+    “At λ=1, a tie or plateau transition occurs.
+     For λ>1, the basin decomposition splits into basins associated with A
+     and C.”
 
 ---
 
@@ -273,9 +282,6 @@ require:
 For operator-norm continuity:
 
     sup_{i,j} |w_{ij}(λ₁) − w_{ij}(λ₂)| → 0 as λ₁ → λ₂.
-
-Changes in w_{ij}(λ) may produce transitions only if minima, basins, plateau
-complexes, or barrier states change.
 
 ---
 
