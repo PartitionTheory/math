@@ -16,7 +16,7 @@ Lesson 0019 develops **structural potential landscape theory**:
 
 • landscape geometry induced by V_λ = F_λ,  
 • local minima, plateau complexes, saddle states,  
-• directional barrier heights and escape paths,  
+• directional barrier heights and escape elevations,  
 • metastability,  
 • epoch transitions via changes in landscape combinatorics.
 
@@ -46,19 +46,28 @@ Key objects:
 
 ---
 
-## 3. Deterministic Update Rule
+## 3. Deterministic Update Rule (Closed Neighbourhood)
 
-To compute basins and transitions, fix a deterministic descent rule:
+Under Lesson 0001, the adjacency neighbourhood 𝒩(p) does not contain p.
 
-    T_λ(p) := argmin_{q ∈ 𝒩(p)} V_λ(q),
+To allow fixed points, define the **closed neighbourhood**:
 
-with lexicographic tie-breaking.
+    𝒩̄(p) := {p} ∪ 𝒩(p).
+
+Define the deterministic update rule:
+
+    T_λ(p) := lexicographically selected element of
+              argmin_{q ∈ 𝒩̄(p)} V_λ(q).
+
+Alternatively, retain the set-valued correspondence:
+
+    𝒯_λ(p) := argmin_{q ∈ 𝒩̄(p)} V_λ(q)
+
+and apply tie-breaking afterwards.
 
 Trajectories satisfy:
 
     p_{n+1} = T_λ(p_n).
-
-Basins, plateaux, and saddle sets are defined relative to this rule.
 
 ---
 
@@ -66,13 +75,18 @@ Basins, plateaux, and saddle sets are defined relative to this rule.
 
 A state p is a **local minimum** if:
 
-    V_λ(q) ≥ V_λ(p)   for all q ∈ 𝒩(p).
+    V_λ(q) ≥ V_λ(p)   for all q ∈ 𝒩̄(p).
 
-The **basin of attraction** of p is:
+Define the basin of a fixed point p:
 
-    Basin_λ(p) := { r ∈ P : T_λ^n(r) = p for some n }.
+    Basin_λ(p)
+    := { r ∈ P : ∃ N such that T_λⁿ(r)=p for all n ≥ N }.
 
-Basins form a partition under deterministic dynamics.
+### Basin Partitioning
+
+• Basins of distinct fixed points are disjoint.  
+• They partition P **only if** every trajectory reaches a fixed point.  
+• Otherwise, periodic cycles must also be included as attractors.
 
 ---
 
@@ -82,7 +96,7 @@ Let G = (P, E) be the adjacency graph.
 
 ### 5.1 Paths
 
-A finite path from a to b is a sequence:
+A finite path from a to b is:
 
     γ = (r_0, r_1, …, r_m)
 
@@ -120,7 +134,7 @@ A state s is a **barrier state** between p₁ and p₂ if:
 • s is an internal vertex of a minimal-energy path γ : p₁ → p₂,  
 • V_λ(s) = H_λ(p₁,p₂).
 
-The **saddle set** is:
+Define the saddle set:
 
     Saddle_λ(p₁,p₂) := { s : s is a barrier state between p₁ and p₂ }.
 
@@ -133,30 +147,34 @@ A **plateau complex** is a maximal connected set S ⊆ P such that:
 • V_λ is constant on S,  
 • S contains at least one weak fixed point.
 
-Plateau complexes allow lateral motion under T_λ.
+Plateau complexes contain **objective-neutral adjacency moves**.
+
+Under deterministic tie-breaking, lateral motion is not automatic; the
+set-valued correspondence 𝒯_λ contains the lateral moves.
 
 ---
 
-## 8. Escape Paths and Shift-Invariant Barrier Heights
+## 8. Escape Elevation and Shift-Invariant Barrier Height
 
 Let p be a local minimum.
 
-An **escape path** is a minimal-energy path γ : p → q with q ∉ Basin_λ(p).
-
 Define the **escape elevation**:
 
-    E_λ(p) := min_{γ : p→q, q∉Basin_λ(p)} H_λ(γ).
+    E_λ(p)
+    := inf { H_λ(γ) :
+             γ is a path from p to q,
+             q ∉ Basin_λ(p) }.
+
+If Basin_λ(p)=P:
+
+    E_λ(p) = +∞,
+    B_λ(p) = +∞.
 
 Define the **shift-invariant barrier height**:
 
     B_λ(p) := E_λ(p) − V_λ(p).
 
-If no escape path exists:
-
-• Basin_λ(p) = P,  
-• E_λ(p) = V_λ(p),  
-• B_λ(p) = 0,  
-• p is globally stable.
+This records the elevation required to leave Basin_λ(p).
 
 ---
 
@@ -167,7 +185,7 @@ A local minimum p is **statically metastable** if:
 • B_λ(p) > 0,  
 • escape paths exist but require elevation above V_λ(p).
 
-This is purely structural; stochastic metastability is not considered.
+Stochastic metastability is not considered.
 
 ---
 
@@ -201,30 +219,41 @@ Define:
     V_λ(B) = λ,
     V_λ(C) = 1.
 
+Closed neighbourhoods:
+
+    𝒩̄(A) = {A, B}
+    𝒩̄(B) = {A, B, C}
+    𝒩̄(C) = {B, C}
+
 ### λ < 0
 
-• B is the unique local minimum.  
-• Basin(B) = {A, B, C}.  
+• B is the unique strict local minimum.  
+• All trajectories reach B.  
 • No saddle states (only one minimum).
 
 ### λ = 0
 
 • A and B form a plateau complex (V_0(A)=V_0(B)=0).  
-• Basin depends on tie-breaking.  
-• Transition point: attractor + plateau transition.
+• Attractor depends on tie-breaking.  
+• Transition point: plateau + attractor transition.
 
 ### 0 < λ < 1
 
-• A is the unique local minimum.  
-• Basin(A) = {A, B, C}.  
-• No saddle states.
+• A is the unique strict local minimum.  
+• All trajectories reach A.
 
-### λ ≥ 1
+### λ = 1
 
-• C enters the local-minimum set.  
-• A remains a local minimum.  
+• A remains a strict local minimum.  
+• C becomes a non-strict local minimum (V_1(B)=V_1(C)=1).  
+• Whether C is a fixed point depends on tie-breaking.  
+• This is a **plateau/tie transition**, not a basin split.
+
+### λ > 1
+
+• A and C are strict local minima.  
 • Basin decomposition splits.  
-• B becomes a barrier state between A and C.  
+• B is the barrier state on the unique path A ↔ B ↔ C.  
 • Transition point: basin-splitting + barrier-state transition.
 
 Thus λ = 0 and λ = 1 are **epoch transition points**.
@@ -245,8 +274,8 @@ For operator-norm continuity:
 
     sup_{i,j} |w_{ij}(λ₁) − w_{ij}(λ₂)| → 0 as λ₁ → λ₂.
 
-Changes in w_{ij}(λ) **may** produce transitions, but only if minima, basins,
-plateau complexes, or barrier states change.
+Changes in w_{ij}(λ) may produce transitions only if minima, basins, plateau
+complexes, or barrier states change.
 
 ---
 
@@ -269,6 +298,8 @@ epoch transitions.
 
 Lesson 0019 establishes:
 
+• closed-neighbourhood update rule,  
+• correct basin definitions and partitioning conditions,  
 • paths, elevations, communication heights, minimal-energy paths,  
 • saddle states, saddle sets, plateau complexes,  
 • escape elevations and shift-invariant barrier heights,  
