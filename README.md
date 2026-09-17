@@ -90,7 +90,7 @@ This file is the **canonical mathematical reference** for ABR v0.5 and Phoenix E
 
 ## Historical Artifacts
 
-### `n-domain.old/`
+### `historical/n-domain.old/`
 Early conceptual drafts, pre‑formalisation.  
 Preserved for lineage and archival completeness.
 
