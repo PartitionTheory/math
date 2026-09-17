@@ -72,7 +72,7 @@ CO checks.
 EF corrects.
 CO formalises.
 EF reviews.
-
+```text
 This sequence was maintained throughout the construction of the document.
 
 ---
