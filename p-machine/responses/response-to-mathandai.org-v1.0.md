@@ -127,7 +127,7 @@ v1.0  Launch edition
 v1.1  Corrections or clarifications
 v1.2  Expanded examples
 v2.0  Major structural revision or extension
-```
+text```
 ## Purpose of Release
 
 The purpose of releasing this work is to make the PMachine lesson available for:
